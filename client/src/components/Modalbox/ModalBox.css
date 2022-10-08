@@ -38,12 +38,13 @@
     text-align: center;
     height: 2.8rem;
     width: 4rem;
+    cursor: pointer;
 }
 
 
 .rotate{
     transform: rotate(45deg);
-   
+   cursor: pointer;
     border: none;
     background: none;
     font-size: 2.2em;
