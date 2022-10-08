@@ -7,15 +7,16 @@ const ModalBox = (props) => {
   return (
     <div className='modal-box'>
       <div className='modal-btn-bar'>
+      <h2 className="white">Session details</h2>
         <button
-          className='nav-btn white rotate'
+          className='rotate'
           onClick={() => {
             document.getElementsByClassName('modal-bg')[0].id = 'hidden'
           }}
         >
-          <h2>+</h2>
+          +
         </button>
-        <h2 className="white">Session details</h2>
+        
        
       </div>
       <h2 className='modal-title'>YOUR SESSION:</h2>

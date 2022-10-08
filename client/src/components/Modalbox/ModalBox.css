@@ -7,11 +7,13 @@
 .modal-btn-bar{
     box-sizing: border-box;
     background-color: #002240;
-    padding-bottom: 13px;
     border-radius: 3px;
     display: flex;
     justify-content: space-between;
-    text-align: center;
+    padding:0 10px;
+    height: 5em;
+    
+   
 }
 .nav-btn{
     cursor: pointer;
@@ -25,6 +27,7 @@
 }
 #modal-session-input{
     border-radius: 5px;
+    height: 2em;
 }
 .black{
     color:white;
@@ -33,16 +36,20 @@
     margin-left: 10px;
     border-radius: 5px;
     text-align: center;
+    height: 2.8rem;
+    width: 4rem;
 }
-input,button{
-    height:2.5em;
-}
+
 
 .rotate{
     transform: rotate(45deg);
-    position: absolute;
-    top: 0;
-   right: 0;
-   font-size: 40px;
-    
+   
+    border: none;
+    background: none;
+    font-size: 2.2em;
+    color: white;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    text-align: center;
+  
 }
