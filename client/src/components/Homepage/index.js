@@ -5,6 +5,12 @@ import React, { useEffect, useState } from 'react'
 import AceEditor from 'react-ace'
 import axios from 'axios'
 import openSocket from 'socket.io-client'
+import { AiFillGithub } from "react-icons/ai";
+import { FiClock } from "react-icons/fi";
+import { FiFileText } from "react-icons/fi";
+import { FiRotateCcw } from "react-icons/fi";
+import { FiAlignJustify } from "react-icons/fi";
+import { ImBrightnessContrast } from "react-icons/im";
 // ace
 import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/mode-c_cpp'
@@ -204,13 +210,12 @@ const Homepage = () => {
       </div>
       <div className="nav">
         <h1 id="brand">
-          {' '}
-          &gt;codeBox{' '}
+          {"<CodeBox/>"}
           {joinedSessionCode !== '' ? 'joined: ' + joinedSessionCode : ''}
         </h1>
         <div id="navigation" className="hide_menu">
           <button className="nav-btn menu_btn" onClick={toggleMenu}>
-            <h2>Menu</h2>
+            <h2> <FiAlignJustify/> Menu</h2>
           </button>
 
           <select 
@@ -238,7 +243,7 @@ const Homepage = () => {
                 window.location.reload()
               }}
             >
-              <h2>disconnect</h2>
+              <h2>Disconnect</h2>
             </button>
           ) : (
             <></>
@@ -250,21 +255,21 @@ const Homepage = () => {
               document.getElementsByClassName('modal-bg')[0].id = ''
             }}
           >
-            <h2>session</h2>
+            <h2> <FiClock/> Session</h2>
           </button>
           <button
             style={{ display: visible ? 'block' : 'none' }}
             className="nav-btn"
             onClick={() => window.open(CONSTANTS.DOCS)}
           >
-            <h2>docs</h2>
+            <h2> <FiFileText/> Documentation</h2>
           </button>
           <button
             style={{ display: visible ? 'block' : 'none' }}
             className="nav-btn"
             onClick={() => window.open(CONSTANTS.GITHUB_URL)}
           >
-            <h2>github</h2>
+            <h2><AiFillGithub/>  GitHub</h2>
           </button>
           <button
             style={{ display: visible ? 'block' : 'none' }}
@@ -274,7 +279,7 @@ const Homepage = () => {
               window.location.reload()
             }}
           >
-            <h2>CLEAR DATA</h2>
+            <h2> <FiRotateCcw/> Reset</h2>
           </button>
         </div>
       </div>

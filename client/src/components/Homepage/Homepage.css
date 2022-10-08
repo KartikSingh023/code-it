@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300&display=swap');
 * {
     font-family: 'JetBrains Mono';
 }
@@ -85,6 +86,7 @@ justify-content: space-between;
     font-weight: bold;
     margin: 5pt;
     margin-left: 10pt;
+    font-family: "Encode Sans";
 }
 
 #navigation {
@@ -101,6 +103,18 @@ justify-content: space-between;
     color: #002240;
     background-color: transparent;
     cursor: pointer;
+}
+
+.nav-btn,
+.nav-btn option,
+.nav-btn h2 {
+    font-family: 'Encode Sans';
+}
+
+.nav-btn h2 svg {
+    vertical-align: middle;
+    height: 1.1em;
+    width: 1.1em;
 }
 
 .white {
