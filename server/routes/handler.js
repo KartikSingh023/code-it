@@ -17,6 +17,10 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 // routes
 
+router.get('*', async (req, res) => {
+  res.status(404).send(`POST programs to localhost:9000/code`)
+})
+
 // GET handler for /
 router.get('/', async (req, res) => {
   res.send(`POST programs to localhost:9000/code`)

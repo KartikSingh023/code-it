@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AceEditor from 'react-ace'
 import axios from 'axios'
+import openSocket from 'socket.io-client'
 import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/mode-c_cpp'
 import 'ace-builds/src-noconflict/mode-javascript'
@@ -12,6 +13,7 @@ import '../fonts/JetBrainsMono[wght].ttf'
 import './home.css'
 
 var languages = ['python', 'c_cpp', 'javascript']
+const socket = openSocket('http://localhost:9000')
 const modes = { javascript: 'js', c_cpp: 'cpp', python: 'py' }
 const defaultCode = {
   javascript: "console.log('hello rce')",
@@ -21,19 +23,23 @@ const defaultCode = {
 }
 
 const Homepage = () => {
-  const [output, setOutput] = useState('')
-
   const [userCode, setUserCode] = useLocalStorage('userCode', '')
   const [mode, setMode] = useLocalStorage('mode', 'python')
   const [code, setCode] = useLocalStorage('code', defaultCode[mode])
   const [input, setInput] = useLocalStorage('input', '')
+  const [output, setOutput] = useState('')
+  const [joinedSessionCode, setJoinedSessionCode] = useState('')
 
   useEffect(() => {
-    if (userCode === '')
+    if (userCode === '') {
       axios.get('/code').then(({ data }) => setUserCode(data))
+    }
+    socket.emit('joinSession', userCode)
   }, [])
 
-  // const [isSessionStarter, setSessionStarter] = useState(true)
+  useEffect(() => {
+    console.log(joinedSessionCode)
+  }, [joinedSessionCode])
 
   const modeHandle = (e) => {
     setCode(defaultCode[e.target.value])
@@ -55,12 +61,31 @@ const Homepage = () => {
 
   return (
     <>
-      <div className="modal-bg">
-        <ModalBox userCode={userCode} />
+      <div className="modal-bg" id="hidden">
+        <ModalBox
+          userCode={userCode}
+          setJoinedSessionCode={setJoinedSessionCode}
+        />
       </div>
       <div className="nav">
-        <h1 id="brand"> &gt;codeBox </h1>
+        <h1 id="brand">
+          {' '}
+          &gt;codeBox{' '}
+          {joinedSessionCode !== '' ? 'joined: ' + joinedSessionCode : ''}
+        </h1>
         <div id="navigation">
+          {joinedSessionCode !== '' ? (
+            <button
+              className="nav-btn"
+              onClick={() => {
+                setJoinedSessionCode('')
+              }}
+            >
+              <h2>disconnect</h2>
+            </button>
+          ) : (
+            <></>
+          )}
           <button
             className="nav-btn"
             onClick={() => {
@@ -127,6 +152,8 @@ const Homepage = () => {
               enableLiveAutocompletion: true,
               enableSnippets: true,
             }}
+            highlightActiveLine={joinedSessionCode === '' ? true : false}
+            readOnly={joinedSessionCode === '' ? false : true}
           />
         </div>
       </div>
@@ -146,6 +173,8 @@ const Homepage = () => {
             fontSize={18}
             showPrintMargin={false}
             showGutter={false}
+            highlightActiveLine={joinedSessionCode === '' ? true : false}
+            readOnly={joinedSessionCode === '' ? false : true}
           />
         </div>
       </div>
@@ -165,7 +194,7 @@ const Homepage = () => {
             showPrintMargin={false}
             showGutter={false}
             highlightActiveLine={false}
-            readOnly
+            readOnly={true}
           />
         </div>
       </div>
