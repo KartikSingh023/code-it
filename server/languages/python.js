@@ -30,7 +30,8 @@ const pythonHandler = async (key, storagePath) => {
     ))
   ) {
     return {
-      code: 1,
+      // code: 1,
+      stdout: '',
       stderr: 'invalid code',
     }
   }

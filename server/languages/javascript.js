@@ -27,6 +27,7 @@ const jsHandler = async (key, storagePath) => {
   if (!(await isValid(filePath + '.js', false, acceptList, importRE, ''))) {
     return {
       code: 1,
+      stdout: '',
       stderr: 'invalid code',
     }
   }

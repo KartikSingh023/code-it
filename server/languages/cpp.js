@@ -38,6 +38,7 @@ const cppHandler = async (key, storagePath) => {
   if (!(await isValid(filePath + '.cpp', false, acceptList, importRE, ''))) {
     return {
       code: 1,
+      stdout: '',
       stderr: 'invalid code',
     }
   }

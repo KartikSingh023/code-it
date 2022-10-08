@@ -68,7 +68,7 @@ router.post('/code', (req, res) => {
               console.log('responding to client with result')
               console.log(result)
               if (result.stderr) {
-                res.send(result.stderr.stderr)
+                res.send(result.stderr)
               }
               res.send(result.stdout)
             }) // callback responds result of successful execution

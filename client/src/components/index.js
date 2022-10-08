@@ -26,7 +26,6 @@ const Homepage = () => {
   }, [])
 
   const handlerun = () => {
-    console.log('oka')
     axios
       .post('/code', {
         key: userCode,
@@ -34,7 +33,10 @@ const Homepage = () => {
         input: input,
         code: code,
       })
-      .then(({ data }) => setOutput(data))
+      .then(({ data }) => {
+        console.log(data)
+        setOutput(data.toString())
+      })
   }
 
   return (

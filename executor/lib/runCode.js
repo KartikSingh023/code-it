@@ -14,9 +14,10 @@ const runCode = async (language, filePath) => {
           `g++ -o ${filePath}.out ${filePath}.cpp && ${filePath}.out < ${filePath}`,
           { timeout: 3000, maxBuffer: 1024 * 1024 * 5 }
         )
+        console.log(result)
         fs.promises.unlink(filePath + '.out')
       } catch (err) {
-        result = { stderr: err }
+        result = err
       }
       break
     }
@@ -27,8 +28,9 @@ const runCode = async (language, filePath) => {
           timeout: 5000,
           maxBuffer: 1024 * 1024 * 5,
         })
+        console.log(result)
       } catch (err) {
-        result = { stderr: err }
+        result = err
       }
       break
     }
@@ -40,8 +42,9 @@ const runCode = async (language, filePath) => {
           timeout: 5000,
           maxBuffer: 1024 * 1024 * 5,
         })
+        console.log(result)
       } catch (err) {
-        result = { stderr: err }
+        result = err
       }
       break
     }
