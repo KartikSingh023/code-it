@@ -43,6 +43,8 @@ This RCE project combines various different technologies:
 
 - Bash scripting - Convinience scripts for environment setup and project execution
 
+- Socket.io - Websocket to implement live sharing feature
+
 ## Functioning
 
 The API accepts POST requests at the `localhost:9000/code` or `http://13.126.57.93/code` endpoint.
