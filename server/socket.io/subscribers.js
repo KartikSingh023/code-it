@@ -1,4 +1,11 @@
-const subscriberRecord = {}
+const subscriberRecord = {
+  // channelID:{
+  //   user1:[
+  // sid
+  //   ]
+  //   user2:
+  // }
+}
 
 const subscribers = {
   getSubscribers: () => subscriberRecords,

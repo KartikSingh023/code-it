@@ -5,6 +5,7 @@ const express = require('express')
 const socketIo = require('socket.io')
 const cors = require('cors')
 const subscribers = require('./socket.io/subscribers')
+const bodyParser = require('body-parser')
 // global variables initialised
 const PORT = 9000
 const app = express()
@@ -13,7 +14,7 @@ const server = require('http').createServer(app)
 app.use('/', require('./routes/handler'))
 //cors
 app.use(cors())
-
+app.use(bodyParser.json())
 const io = socketIo(server, {
   cors: {
     origin: 'http://localhost:3000',
@@ -35,9 +36,10 @@ io.on('connection', (client) => {
     if (channelID && userID) {
       const { sid } = subscribers.getReceiverByChannel(channelID, userID)
       console.log({ sid })
-      const receiverSocket = io.sockets
-      console.log({ receiverSocket })
-      // receiverSocket.emit('realReceive', { mode, input, code, output })
+      const receiverSocket = io.sockets.sockets.get(sid)
+      // console.log(receiverSocket.get(sid))
+      // console.log(Object.keys(receiverSocket))
+      receiverSocket.emit('realReceive', { mode, input, code, output })
     }
   })
 })
