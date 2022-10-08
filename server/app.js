@@ -23,24 +23,28 @@ const io = socketIo(server, {
     credentials: true,
   },
 })
-
 io.on('connection', (client) => {
+  client.on('hostSession', (data) => {
+    const { channelID } = data
+    client.join(channelID)
+  })
   client.on('joinSession', (data) => {
-    console.log(data)
-    const { channelID, userID } = data
-    subscribers.setSubscriberToChannel(channelID, userID, client.id)
+    const { channelID } = data
+    client.join(channelID)
   })
   client.on('realtime', (data) => {
-    console.log(data)
-    const { channelID, userID, mode, input, output, code } = data
-    if (channelID && userID) {
-      const { sid } = subscribers.getReceiverByChannel(channelID, userID)
-      console.log({ sid })
-      const receiverSocket = io.sockets.sockets.get(sid)
-      // console.log(receiverSocket.get(sid))
-      // console.log(Object.keys(receiverSocket))
-      receiverSocket.emit('realReceive', { mode, input, code, output })
-    }
+    const { channelID, mode, input, output, code } = data
+    io.to(channelID).emit('realReceive', { mode, input, code, output })
+    // if (channelID && userID) {
+    //   const sid = subscribers.getReceiverByChannel(channelID, userID)
+    //   if (sid) {
+    //     console.log(sid.sid)
+    //     const receiverSocket = io.sockets.sockets.get(sid.sid)
+    //     // console.log(receiverSocket.get(sid))
+    //     // console.log(Object.keys(receiverSocket))
+    //     receiverSocket.emit('realReceive', { mode, input, code, output })
+    //   }
+    // }
   })
 })
 

@@ -33,19 +33,20 @@ const Homepage = () => {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
   const [joinedSessionCode, setJoinedSessionCode] = useState('')
-  const [userID, setUserID] = useState('')
+  // const [userID, setUserID] = useState('')
+  // const [channelID, setChannelID] = useState('')
   useEffect(() => {
     if (userCode === '') {
       axios
         .get('/code')
         .then(({ data }) => {
           setUserCode(data)
-          const code = `${data}-${new Date().getTime()}`
-          setUserID(code)
-          socket.emit('joinSession', {
-            mark: 'usercode',
+          // const code = `${data}-${new Date().getTime()}`
+          // setUserID(code)
+          socket.emit('hostSession', {
+            // mark: 'usercode',
             channelID: data,
-            userID: code,
+            // userID: code,
           })
         })
         .catch((e) => console.log('error', e))
@@ -56,27 +57,35 @@ const Homepage = () => {
     console.log(joinedSessionCode)
     // setUserID(`${joinedSessionCode}-${new Date().getTime()}`)
     socket.emit('joinSession', {
-      mark: 'koincode',
+      // mark: 'joincode',
       channelID: joinedSessionCode,
-      userID,
-    })
-
-    socket.on('realReceive', (data) => {
-      console.log('revice', data)
+      // userID,
     })
   }, [joinedSessionCode])
 
   useEffect(() => {
-    const channelID = joinedSessionCode || userCode
-    socket.emit('realtime', {
-      channelID,
-      userID,
-      mode,
-      code,
-      input,
-      output,
-    })
-  }, [mode, code, input, output])
+    if (!joinedSessionCode)
+      socket.emit('realtime', {
+        channelID: userCode,
+        // userID,
+        mode,
+        code,
+        input,
+        output,
+      })
+  }, [code, output, mode, input, userCode, joinedSessionCode])
+
+  useEffect(() => {
+    if (joinedSessionCode) {
+      socket.on('realReceive', (data) => {
+        console.log('revice', data)
+        setMode(data.mode)
+        setInput(data.input)
+        setOutput(data.output)
+        setCode(data.code)
+      })
+    }
+  }, [joinedSessionCode])
 
   const modeHandle = (e) => {
     setCode(defaultCode[e.target.value])
@@ -158,6 +167,7 @@ const Homepage = () => {
           <select
             id="language-select"
             defaultValue={mode}
+            value={mode}
             onChange={modeHandle}
           >
             {languages.map((lang) => {
