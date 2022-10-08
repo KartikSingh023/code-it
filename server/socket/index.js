@@ -1,12 +1,12 @@
 const { socketEvents } = require('./socketEvents')
-const {SOCKET} = require('../constants.js')
+const CONSTANTS = require('../constants.js')
+const SOCKET = CONSTANTS.SOCKET
 
 module.exports.initializer = (socketIo, server) => {
   const io = socketIo(server, {
     cors: {
       origin: SOCKET.ORIGIN,
       methods: SOCKET.METHODS,
-      allowedHeaders: SOCKET.HEADERS,
       credentials: true,
     },
   })

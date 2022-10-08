@@ -5,17 +5,17 @@ const isValid = require('../lib/valid')
 const execute = require('../lib/execute')
 
 //constants
-const {CPP} = require('../constants.js')
+const CONSTANTS = require('../constants.js')
 
 // execution handling
 
 const cppHandler = async (key, storagePath) => {
   const filePath = storagePath + key
   // RegExp for #include <foo> statement sanitisation
-  const importRE = CPP.REGEX
+  const importRE = CONSTANTS.CPP.REGEX
 
   // list of acceptable libraries
-  const acceptList = CPP.ACCEPT_LIST
+  const acceptList = CONSTANTS.CPP.ACCEPT_LIST
 
   // code validity check
   if (!(await isValid(filePath + '.cpp', false, acceptList, importRE, ''))) {

@@ -4,8 +4,8 @@
 const express = require('express')
 const cors = require('cors')
 const socketIo = require('socket.io')
-const { PORT } = require('./constants.js')
-
+const CONSTANTS = require('./constants.js')
+const PORT = CONSTANTS.PORT
 // socket.io
 const socket = require('./socket')
 
