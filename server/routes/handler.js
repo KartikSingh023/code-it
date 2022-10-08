@@ -1,6 +1,5 @@
 // package imports
 const express = require('express')
-const app = express()
 const fs = require('fs')
 const pythonHandler = require('../languages/python')
 const cppHandler = require('../languages/cpp')

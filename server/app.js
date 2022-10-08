@@ -19,7 +19,7 @@ app.use(cors())
 // middleware, routing
 app.use('/', require('./routes/handler'))
 
-const io = socket.initializer(socketIo, server)
+socket.initializer(socketIo, server)
 
 // server listening on PORT
 server.listen(PORT, () => {
