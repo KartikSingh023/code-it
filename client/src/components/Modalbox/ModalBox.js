@@ -15,15 +15,7 @@ const ModalBox = (props) => {
         >
           <h2>CLOSE</h2>
         </button>
-        <button
-          className='nav-btn white'
-          onClick={() => {
-            localStorage.clear()
-            window.location.reload()
-          }}
-        >
-          <h2>CLEAR DATA</h2>
-        </button>
+       
       </div>
       <h2 className='modal-title'>YOUR SESSION:</h2>
       <div className='modal-current-session'>

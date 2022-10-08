@@ -204,6 +204,15 @@ const Homepage = () => {
           >
             <h2>github</h2>
           </button>
+          <button
+          className='nav-btn'
+          onClick={() => {
+            localStorage.clear()
+            window.location.reload()
+          }}
+        >
+          <h2>CLEAR DATA</h2>
+        </button>
         </div>
       </div>
       <div className="code-region">
