@@ -5,6 +5,7 @@ import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/mode-c_cpp'
 import 'ace-builds/src-noconflict/mode-javascript'
 import 'ace-builds/src-noconflict/theme-monokai'
+import 'ace-builds/src-noconflict/theme-solarized_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
 
 const languages = ['javascript', 'c_cpp', 'python']
@@ -47,7 +48,7 @@ const Homepage = () => {
         >
           <div
             className="d-flex justify-content-between"
-            style={{ background: 'black', color: 'white' }}
+            style={{ background: '#002b36', color: 'white' }}
           >
             <h1 className="">Code</h1>
             <select onChange={modeHandle}>
@@ -57,12 +58,12 @@ const Homepage = () => {
                 </option>
               ))}
             </select>
-            <button onClick={handlerun}>run</button>
+            <button onClick={handlerun}>RUN</button>
           </div>
           <div style={{ width: '100%', height: '100%' }}>
             <AceEditor
               mode={mode}
-              theme="monokai"
+              theme="solarized_dark"
               height="100%"
               width="100%"
               value={code}
@@ -80,13 +81,13 @@ const Homepage = () => {
         </div>
         <div className="col-5 p-0">
           <div className="d-flex flex-column" style={{ height: '100vh' }}>
-            <div style={{ background: 'black', color: 'white' }}>
+            <div style={{ background: '#002b36', color: 'white' }}>
               <h1>Input</h1>
             </div>
             <div style={{ width: '100%', height: '100%' }}>
               <AceEditor
                 mode="text"
-                theme="monokai"
+                theme="solarized_dark"
                 height="100%"
                 width="100%"
                 value={input}
@@ -98,14 +99,14 @@ const Homepage = () => {
             </div>
             <div
               className="pt-1 mt-1"
-              style={{ background: 'black', color: 'white' }}
+              style={{ background: '#002b36', color: 'white' }}
             >
               <h1>Output</h1>
             </div>
             <div style={{ width: '100%', height: '100%' }}>
               <AceEditor
                 mode="text"
-                theme="monokai"
+                theme="solarized_dark"
                 height="100%"
                 width="100%"
                 value={output}
