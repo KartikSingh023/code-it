@@ -48,14 +48,14 @@ router.post('/code', (req, res) => {
   // storage for input
   fs.writeFile(inputFilePath, input, (inpFileErr) => {
     if (inpFileErr) {
-      res.send(`input err ${inpFileErr}`)
+      res.send({ stderr: `input err ${inpFileErr}` })
       return
     }
 
     // storage for user's program
     fs.writeFile(codeFilePath + '.' + language, code, async (codeFileErr) => {
       if (codeFileErr) {
-        res.send(`code err ${codeFileErr}`)
+        res.send({ stderr: `code err ${codeFileErr}` })
         return
       }
 

@@ -1,6 +1,14 @@
 # Remote Code Executer
 
-This RCE project currently provides a basic API to execute programs on a remote server. Basic code validation is performed to prevent potentially malicious code.
+Available at: http://codebox-rce.herokuapp.com
+
+> NOTE: Do NOT access the `https` version of the above site. The API server does not currently have an SSL certificate, and so the `https` client will not be able to communicate with the API due to the Mixed Content policy in browsers.
+
+***
+
+This RCE project provides a basic API to execute programs on a remote server. Basic code validation is performed to prevent potentially malicious code.
+
+A client application is also available to access the API. The client also allows usage of an interview-oriented session system. Each user obtains a `sessionId` key. Users can join another session by entering the other session's ID. Joining a session permits you to only observe the session, only the session creator can edit the code and input.
 
 ## Functioning:
 
@@ -34,7 +42,7 @@ os | subprocess | shlex | xml | pickle
 ```
 #### C++ (Accepted Libraries):
 ```
-iostream | algorithm | stdio    | cstdio | vector | math | cmath | cstring | string
+iostream | algorithm | stdio    | cstdio | vector | math | cmath | cstring | string |
 deque    | iomanip   | iterator | map    | queue  | set  | stack | conio   | ctype
 ```
 #### Node/Javascript (Accepted Libraries):

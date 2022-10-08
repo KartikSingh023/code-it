@@ -10,13 +10,13 @@ For Linux users who do not have docker engine and docker-compose set up on their
 ```
 $ sudo bash ./setup.sh
 ```
-NOTE: This script will also handle the permissions for docker to function normally. You will be prompted to reboot your device at the end, it is advisable to accept so as to apply all the changes.
+> NOTE: This script will also handle the permissions for docker to function normally. You will be prompted to reboot your device at the end, it is advisable to accept so as to apply all the changes.
 ***
 In case you choose to not run the bash script, you can follow the steps below, including the "Permissions" section.
 
 The project requires the host machine to have docker and docker-compose installed. Follow the official installation guide available at [Install Docker Engine](https://docs.docker.com/engine/install/ubuntu/) and [Install Docker Compose](https://docs.docker.com/compose/install/).
 
-Note that docker-compose depends on docker engine to function.
+> NOTE: docker-compose depends on docker engine to function.
 
 #### Permissions:
 
