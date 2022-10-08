@@ -64,15 +64,24 @@ const Homepage = () => {
   }, [joinedSessionCode])
 
   useEffect(() => {
-    if (!joinedSessionCode)
+    if (!joinedSessionCode) {
       socket.emit('realtime', {
         channelID: userCode,
-        // userID,
         mode,
         code,
         input,
         output,
       })
+      socket.on('initialLoad', () => {
+        socket.emit('realtime', {
+          channelID: userCode,
+          mode,
+          code,
+          input,
+          output,
+        })
+      })
+    }
   }, [code, output, mode, input, userCode, joinedSessionCode])
 
   useEffect(() => {

@@ -31,6 +31,7 @@ io.on('connection', (client) => {
   client.on('joinSession', (data) => {
     const { channelID } = data
     client.join(channelID)
+    io.to(channelID).emit('initialLoad')
   })
   client.on('realtime', (data) => {
     const { channelID, mode, input, output, code } = data
