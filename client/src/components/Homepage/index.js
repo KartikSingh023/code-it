@@ -62,8 +62,8 @@ const Homepage = () => {
   /* state to toggle the navbar of the screen */
   const [visible, setVisible] = useState(true)
     
-  //State to change the themes
-  const [currentTheme, setCurrentTheme] = useState(CONSTANTS.DEFAULT_THEME) 
+  //using custom hook to change the themes
+  const [currentTheme, setCurrentTheme] =  useLocalStorage('currentTheme',CONSTANTS.DEFAULT_THEME)  
     
   // non cached state vars
   const [output, setOutput] = useState('')
@@ -117,9 +117,6 @@ const Homepage = () => {
       if (window.screen.width < 500) {
         setVisible(false)
       }
-
-      //Set theme based on localStorage; if user is new,then use default theme
-      setCurrentTheme(localStorage.getItem('codebox_theme') || CONSTANTS.DEFAULT_THEME)
 
   }, [])
 
@@ -194,7 +191,6 @@ const Homepage = () => {
   //Function to handle change of selected theme
   const handleThemeChange = (e) => {
     setCurrentTheme(e.target.value)
-    localStorage.setItem("codebox_theme",e.target.value)
   }
 
   // component return
