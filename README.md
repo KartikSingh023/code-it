@@ -25,6 +25,9 @@ The client application, linked above, is available to access the API. It enables
 - Code validation - Dangerous libraries that can allow malicious execution are invalidated through /regex/ checks, and code containing such libraries are not executed.
 - Live sessions. Each user can access and share their session's ID through the **`session`** menu in the navbar - Users can paste a session ID to join someone else's room from the same. (Only available through the client app)
 
+## Architecture
+![Codebox Architecture](docs/codebox-rce-architecture.png)
+
 ## Set Up
 
 User set up for this project is not required, as a deployed version can be accessed through the [client app](http://codebox-rce.herokuapp.com) (linked at the top).
