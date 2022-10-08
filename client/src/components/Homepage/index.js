@@ -64,15 +64,11 @@ const Homepage = () => {
     'joinedSessionCode',
     ''
     )
-    
-  /* state to toggle the navbar of the screen */
-  const [visible, setVisible] = useState(true)
-    
-  //using custom hook to change the themes
-  const [currentTheme, setCurrentTheme] =  useLocalStorage('currentTheme',CONSTANTS.DEFAULT_THEME)  
-    
-  // non cached state vars
+  const [currentTheme, setCurrentTheme] =  useLocalStorage('currentTheme',CONSTANTS.DEFAULT_THEME)  //using custom hook to change the themes  
+  
+ // non cached state vars
   const [output, setOutput] = useState('')
+  const [visible, setVisible] = useState(true) /* state to toggle the navbar of the screen */
 
   //code run on press of F5
   useEffect(() => {
