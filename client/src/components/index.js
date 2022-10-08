@@ -4,20 +4,27 @@ import axios from 'axios'
 import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/mode-c_cpp'
 import 'ace-builds/src-noconflict/mode-javascript'
-import 'ace-builds/src-noconflict/theme-monokai'
-import 'ace-builds/src-noconflict/theme-solarized_dark'
+import 'ace-builds/src-noconflict/theme-cobalt'
 import 'ace-builds/src-noconflict/ext-language_tools'
 
-const languages = ['javascript', 'c_cpp', 'python']
+const languages = ['python', 'c_cpp', 'javascript']
 const modes = { javascript: 'js', c_cpp: 'cpp', python: 'py' }
+const defaultCode = {
+  javascript: "console.log('hello rce')",
+  c_cpp:
+    '#include <iostream>\n\nint main() {\n\tstd::cout << "hello rce";\n\treturn 0;\n}',
+  python: "print('hello rce')",
+}
+
 const Homepage = () => {
-  const [mode, setMode] = useState('javascript')
+  const [mode, setMode] = useState('python')
   const [userCode, setUserCode] = useState('')
-  const [code, setCode] = useState('')
+  const [code, setCode] = useState(defaultCode[mode])
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
 
   const modeHandle = (e) => {
+    setCode(defaultCode[e.target.value])
     setMode(e.target.value)
   }
 
@@ -40,30 +47,58 @@ const Homepage = () => {
   }
 
   return (
-    <div className="container-fluid m-0 p-0">
-      <div className="row m-0 p-0 ">
+    <div
+      className="container-fluid m-0 p-0"
+      style={{ background: 'rgb(1, 30, 58)' }}
+    >
+      <div
+        className="container-fluid p-2"
+        style={{ width: '100%', height: '7vh', background: 'white' }}
+      >
+        <h1>code/online</h1>
+      </div>
+      <div className="row m-0 p-0">
         <div
           className="m-0 col-7 pr-1 p-0 d-flex flex-column"
           style={{ height: '100vh' }}
         >
           <div
-            className="d-flex justify-content-between"
-            style={{ background: '#002b36', color: 'white' }}
+            className="d-flex justify-content-left"
+            style={{ background: 'rgb(1, 30, 58)', color: 'white' }}
           >
-            <h1 className="">Code</h1>
-            <select onChange={modeHandle}>
+            <h2 className="">code</h2>
+            <h2 style={{ fontWeight: 'lighter' }}>|</h2>
+            <select
+              onChange={modeHandle}
+              style={{
+                background: 'rgb(1, 30, 58)',
+                color: 'white',
+                borderColor: 'transparent',
+              }}
+            >
               {languages.map((lang) => (
                 <option key={lang} value={lang}>
-                  {lang}
+                  {lang.toUpperCase()}
                 </option>
               ))}
             </select>
-            <button onClick={handlerun}>RUN</button>
+            <h2 style={{ fontWeight: 'lighter' }}>|</h2>
+            <button
+              onClick={handlerun}
+              style={{
+                background: 'rgb(1, 30, 58)',
+                color: 'white',
+                borderColor: 'transparent',
+                textDecorationLine: 'underline',
+              }}
+            >
+              RUN
+            </button>
           </div>
           <div style={{ width: '100%', height: '100%' }}>
             <AceEditor
               mode={mode}
-              theme="solarized_dark"
+              theme="cobalt"
               height="100%"
               width="100%"
               value={code}
@@ -81,13 +116,13 @@ const Homepage = () => {
         </div>
         <div className="col-5 p-0">
           <div className="d-flex flex-column" style={{ height: '100vh' }}>
-            <div style={{ background: '#002b36', color: 'white' }}>
-              <h1>Input</h1>
+            <div style={{ background: 'rgb(1, 30, 58)', color: 'white' }}>
+              <h2>input</h2>
             </div>
             <div style={{ width: '100%', height: '100%' }}>
               <AceEditor
                 mode="text"
-                theme="solarized_dark"
+                theme="cobalt"
                 height="100%"
                 width="100%"
                 value={input}
@@ -99,14 +134,14 @@ const Homepage = () => {
             </div>
             <div
               className="pt-1 mt-1"
-              style={{ background: '#002b36', color: 'white' }}
+              style={{ background: 'rgb(1, 30, 58)', color: 'white' }}
             >
-              <h1>Output</h1>
+              <h2>output</h2>
             </div>
             <div style={{ width: '100%', height: '100%' }}>
               <AceEditor
                 mode="text"
-                theme="solarized_dark"
+                theme="cobalt"
                 height="100%"
                 width="100%"
                 value={output}
