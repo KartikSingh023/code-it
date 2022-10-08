@@ -17,8 +17,8 @@ services:
   # executor container responds to requests from the server container
   executor:
     build: ./executor
-    ports:
-      - '8080:8080'
+    # ports:
+      # - '8080:8080'
       # localhost:8080/ for host machine
       # executor:8080/ for containers
     volumes:
