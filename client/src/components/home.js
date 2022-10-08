@@ -33,20 +33,16 @@ const Homepage = () => {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
   const [joinedSessionCode, setJoinedSessionCode] = useState('')
-  // const [userID, setUserID] = useState('')
-  // const [channelID, setChannelID] = useState('')
+
   useEffect(() => {
     if (userCode === '') {
       axios
         .get('/code')
         .then(({ data }) => {
           setUserCode(data)
-          // const code = `${data}-${new Date().getTime()}`
-          // setUserID(code)
+
           socket.emit('hostSession', {
-            // mark: 'usercode',
             channelID: data,
-            // userID: code,
           })
         })
         .catch((e) => console.log('error', e))
@@ -55,11 +51,9 @@ const Homepage = () => {
 
   useEffect(() => {
     console.log(joinedSessionCode)
-    // setUserID(`${joinedSessionCode}-${new Date().getTime()}`)
+
     socket.emit('joinSession', {
-      // mark: 'joincode',
       channelID: joinedSessionCode,
-      // userID,
     })
   }, [joinedSessionCode])
 
@@ -87,7 +81,6 @@ const Homepage = () => {
   useEffect(() => {
     if (joinedSessionCode) {
       socket.on('realReceive', (data) => {
-        console.log('revice', data)
         setMode(data.mode)
         setInput(data.input)
         setOutput(data.output)
@@ -133,7 +126,11 @@ const Homepage = () => {
             <button
               className="nav-btn"
               onClick={() => {
+                socket.close()
                 setJoinedSessionCode('')
+                setInput('')
+                setOutput('')
+                setCode(defaultCode[mode])
               }}
             >
               <h2>disconnect</h2>
