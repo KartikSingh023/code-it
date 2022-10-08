@@ -6,7 +6,6 @@ const cors = require('cors')
 const socketIo = require('socket.io')
 // socket.io
 const socket = require('./socket')
-const socketEvents = require('./socket/socketEvents')
 // global variables initialised
 const PORT = 9000
 const app = express()
@@ -21,7 +20,6 @@ app.use(cors())
 app.use('/', require('./routes/handler'))
 
 const io = socket.initializer(socketIo, server)
-socketEvents.initializer(io)
 
 // server listening on PORT
 server.listen(PORT, () => {

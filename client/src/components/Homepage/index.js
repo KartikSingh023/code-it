@@ -105,6 +105,7 @@ const Homepage = () => {
         input,
         output,
       });
+
       socket.on("initialLoad", () => {
         socket.emit("realtime", {
           channelID: userCode,

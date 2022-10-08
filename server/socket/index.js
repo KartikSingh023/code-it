@@ -1,3 +1,5 @@
+const { socketEvents } = require('./socketEvents')
+
 module.exports.initializer = (socketIo, server) => {
   const io = socketIo(server, {
     cors: {
@@ -7,5 +9,9 @@ module.exports.initializer = (socketIo, server) => {
       credentials: true,
     },
   })
+
+  // socket listens to connection event
+  io.on('connection', (client) => socketEvents(client, io))
+
   return io
 }
