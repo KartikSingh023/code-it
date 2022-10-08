@@ -21,13 +21,12 @@ $ docker run hello-world
 Reboot the host machine.
 
 ## Starting the application
-
-### Using the Bash Script [Linux/Unix only]:
-
 Start a terminal and redirect into the project repository:
 ```
 $ cd /path/to/repo/remote-code-executor
 ```
+
+### Using the Bash Script [Linux/Unix only]:
 
 Run the provided `start.sh` bash script:
 ```
@@ -93,7 +92,7 @@ The `key` is the string that acts as the name of all the files a user's request 
 ```
 storage
 ├── abcde.cpp		(source code file)
-├── abcde			(input text file)
+├── abcde		(input text file)
 └── abcde.out		(output file, generated on compilation)
 ```
 The `key` is thus also used to generate the `filePath` variable that we saw in the executor service. The `filePath` is simply given (from root) as -- `/storage/${key}` without any file extension.
