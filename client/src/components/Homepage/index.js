@@ -5,12 +5,8 @@ import React, { useEffect, useState } from 'react'
 import AceEditor from 'react-ace'
 import axios from 'axios'
 import openSocket from 'socket.io-client'
-import { AiFillGithub } from "react-icons/ai";
-import { FiClock } from "react-icons/fi";
-import { FiFileText } from "react-icons/fi";
-import { FiRotateCcw } from "react-icons/fi";
-import { FiAlignJustify } from "react-icons/fi";
-import { ImBrightnessContrast } from "react-icons/im";
+import { AiFillGithub,FiClock,FiFileText,FiRotateCcw,FiAlignJustify } from "react-icons/ai";
+
 // ace
 import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/mode-c_cpp'
