@@ -334,7 +334,7 @@ const Homepage = () => {
           )}
         </div>
         <div className="general-editor">
-          <AceEditor
+          <AceEditor 
             mode={mode}
             theme={currentTheme}
             height="100%"

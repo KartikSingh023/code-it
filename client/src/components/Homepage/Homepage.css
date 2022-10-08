@@ -213,7 +213,7 @@ justify-content: space-between;
 }
 
 .hidden {
-    display: none !important;
+    display: none;
 }
 
 .menu_btn {
@@ -234,14 +234,14 @@ justify-content: space-between;
     }
     .nav {
         display: flex;
-        flex-direction: column !important;
+        flex-direction: column ;
     }
-    #navigation {
+    .nav #navigation  {
         display: flex;
-        flex-direction: column !important;
+        flex-direction: column;
     }
     .menu_btn {
-        display: block !important;
+        display: block;
     }
     .nav-btn {
         margin: 0px;
@@ -274,8 +274,8 @@ justify-content: space-between;
     #language-select {
         padding-left: 0px;
     }
-    #code_editor {
-        font-size: 12px !important;
+     #code_editor div {
+        font-size: 12px;
     }
     .input-region {
         width: 98%;
