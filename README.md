@@ -16,7 +16,7 @@
 
 This RCE project provides a basic API to execute programs on a remote server. Basic code validation is performed to prevent possibly malicious code.
 
-The client application, linked above is available to access the API. It enables live sharing of your work through eraltime communication with the server, aimed towards interview sessions. Each user obtains a `sessionId` key. Users can join another session by entering the other session's ID. Joining a session permits you to observe the session in read-only mode, only the session creator can edit the code and input.
+The client application, linked above, is available to access the API. It enables live sharing of your work through realtime communication with the server, aimed towards interview sessions. Each user obtains a `sessionId` key. Users can join another session by entering the other session's ID. Joining a session permits you to observe the session in read-only mode, only the session creator can edit the code and input.
 
 ## Features
 
