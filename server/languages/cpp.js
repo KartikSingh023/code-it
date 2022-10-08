@@ -1,7 +1,6 @@
 // handler for c++ programs
 
 // package imports
-// const runCode = require('../lib/runCode')
 const isValid = require('../lib/valid')
 const execute = require('../lib/execute')
 
@@ -43,7 +42,7 @@ const cppHandler = async (key, storagePath) => {
     }
   }
 
-  // we use a promisified exec() call so that the child process output can be handled outside the callback
+  // at this point, we have validated the code and run execute()
   const result = await execute('cpp', filePath)
   console.log('retruning to handler with result')
   console.log(result)

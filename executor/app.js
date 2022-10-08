@@ -1,7 +1,9 @@
-const express = require('express')
-const runCode = require('./lib/runCode')
-const bodyParser = require('body-parser')
+//entry point
 
+// package imports
+const express = require('express')
+
+// global variables initialised
 const PORT = 8080
 const app = express()
 
@@ -11,6 +13,7 @@ app.get('*', (req, res) => {
 
 app.use('/code', require('./routes/code'))
 
+// listening on PORT
 app.listen(PORT, () => {
   console.log('Executor available on port 8080')
 })

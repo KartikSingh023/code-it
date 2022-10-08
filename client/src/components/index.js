@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Editor from './Editor'
 import AceEditor from 'react-ace'
 import axios from 'axios'
 import 'ace-builds/src-noconflict/mode-python'

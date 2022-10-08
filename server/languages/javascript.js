@@ -1,9 +1,7 @@
 // handler for js programs
 
 // package imports
-// const runCode = require('../lib/runCode')
 const isValid = require('../lib/valid')
-const axios = require('axios')
 const execute = require('../lib/execute')
 
 // execution handling
@@ -32,7 +30,7 @@ const jsHandler = async (key, storagePath) => {
     }
   }
 
-  // we use a promisified exec() call so that the child process output can be handled outside the callback
+  // at this point, we have validated the code and run execute()
   const result = await execute('js', filePath)
   return result
 }

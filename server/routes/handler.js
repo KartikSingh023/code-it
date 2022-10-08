@@ -22,16 +22,17 @@ router.get('/', async (req, res) => {
   res.send(`POST programs to localhost:9000/code`)
 })
 
+// GET handler for /code
 router.get('/code', (req, res) => {
-  const key = crypto.randomBytes(5).toString('hex')
-  res.send(key)
+  const key = crypto.randomBytes(5).toString('hex') // provides a unique key to a client
+  res.send(key) 
 })
 
 // POST handler for /code
 router.post('/code', (req, res) => {
   // request body destructured
   const {
-    key, //a unique key identifying each user
+    key, // a unique key identifying each user
     language, // specifies programming language, doubles as file extension for storage/code.xyz file
     input, // user's input string to be stored in storage/input
     code, // user's code string to be stored in storage/code.xyz

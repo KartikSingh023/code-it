@@ -17,10 +17,7 @@ services:
   # executor container responds to requests from the server container
   executor:
     build: ./executor
-    # ports:
-      # - '8080:8080'
-      # localhost:8080/ for host machine
-      # executor:8080/ for containers
+    # visible as executor:8080/ for other containers, but the app is hidden to the host
     volumes:
       - userdata:/storage # mounted volume, contains user generated data
 volumes:

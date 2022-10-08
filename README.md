@@ -29,65 +29,15 @@ The API accepts POST requests to the `localhost:9000/code` endpoint. Check out D
 Currently, code validation takes place by selectively rejecting or accepting libraries depending on the language. The list of libraries of concern are listed below
 
 #### Python (Rejected Libraries):
-
-- os
-
-- subprocess
-
-- shlex
-
-- xml
-
-- pickle
-
+```
+os | subprocess | shlex | xml | pickle
+```
 #### C++ (Accepted Libraries):
-
-- iostream
-
-- algorithm
-
-- stdio
-
-- cstdio
-
-- vector
-
-- math
-
-- cmath
-
-- cstring
-
-- string
-
-- deque
-
-- iomanip
-
-- iterator
-
-- map
-
-- queue
-
-- set
-
-- stack
-
-- conio
-
-- ctype
-
+```
+iostream | algorithm | stdio    | cstdio | vector | math | cmath | cstring | string
+deque    | iomanip   | iterator | map    | queue  | set  | stack | conio   | ctype
+```
 #### Node/Javascript (Accepted Libraries):
-
-- readline
-
-- buffer
-
-- string_decoder
-
-- timers
-
-- stream
-
-- util
+```
+readline | buffer | string_decoder | timers | stream | util
+```
