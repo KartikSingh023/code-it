@@ -1,0 +1,34 @@
+
+
+.modal-btn-bar{
+    box-sizing: border-box;
+    background-color: #002240;
+    padding-bottom: 13px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-btn{
+    cursor: pointer;
+    background: transparent;
+    border:none;
+    color: white;
+}
+
+.modal-title,.modal-new-session{
+    color:#002240 ;
+}
+#modal-session-input{
+    border-radius: 5px;
+}
+.black{
+    color:white;
+    border:2px solid #002240 ;
+    background: #002240;
+    margin-left: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+input,button{
+    height:2.5em;
+}

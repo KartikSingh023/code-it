@@ -51,12 +51,12 @@
   width: 50%;
 }
 
-.modal-btn-bar{
+/* .modal-btn-bar{
   display: flex;
   flex-direction: row;
   background-color: #fefefe;
   justify-content: space-between;
-}
+} */
 
 .modal-current-session {
   display: flex;
@@ -93,17 +93,21 @@
   align-items: center;
 }
 
+
 .nav-btn {
   border: none;
   margin: 5pt;
   margin-right: 10pt;
+  color: #002240;
+  
   background-color: transparent;
 }
-
-.nav-btn:hover {
-  color: #002240;
-  text-decoration: underline;
+.white{
+  color: white;
+  margin-bottom: 10px;
 }
+
+
 
 .nav-btn:focus {
   outline: none;

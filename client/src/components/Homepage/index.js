@@ -13,7 +13,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/theme-cobalt";
 // custom
 import useLocalStorage from "../../hooks/useLocalStorage";
-import ModalBox from "../ModalBox";
+import ModalBox from "../Modalbox/ModalBox";
 // style
 import "../../fonts/JetBrainsMono[wght].ttf";
 import "./Homepage.css";
