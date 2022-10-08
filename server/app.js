@@ -2,21 +2,17 @@
 
 // package imports
 const express = require('express')
-const http = require('http')
 const socketIo = require('socket.io')
 const cors = require('cors')
+const subscribers = require('./socket.io/subscribers')
 // global variables initialised
 const PORT = 9000
 const app = express()
-//cors
-app.use(cors())
+const server = require('http').createServer(app)
 // middleware, routing
 app.use('/', require('./routes/handler'))
-
-// app listening on PORT
-const server = app.listen(PORT, () => {
-  console.log(`app listening at http://localhost:${PORT}`)
-})
+//cors
+app.use(cors())
 
 const io = socketIo(server, {
   cors: {
@@ -28,7 +24,25 @@ const io = socketIo(server, {
 })
 
 io.on('connection', (client) => {
-  client.on('joinSession', (socket) => {
-    console.log(socket)
+  client.on('joinSession', (data) => {
+    console.log(data)
+    const { channelID, userID } = data
+    subscribers.setSubscriberToChannel(channelID, userID, client.id)
   })
+  client.on('realtime', (data) => {
+    console.log(data)
+    const { channelID, userID, mode, input, output, code } = data
+    if (channelID && userID) {
+      const { sid } = subscribers.getReceiverByChannel(channelID, userID)
+      console.log({ sid })
+      const receiverSocket = io.sockets
+      console.log({ receiverSocket })
+      // receiverSocket.emit('realReceive', { mode, input, code, output })
+    }
+  })
+})
+
+// server listening on PORT
+server.listen(PORT, () => {
+  console.log(`app listening at http://localhost:${PORT}`)
 })

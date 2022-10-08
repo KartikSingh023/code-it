@@ -23,34 +23,33 @@ const defaultCode = {
 }
 
 const Homepage = () => {
-  const [userCode, setUserCode] = useLocalStorage('userCode', '')
-  const [mode, setMode] = useLocalStorage('mode', 'python')
-  const [code, setCode] = useLocalStorage('code', defaultCode[mode])
-  const [input, setInput] = useLocalStorage('input', '')
-  // const [userCode, setUserCode] = useState('')
-  // const [mode, setMode] = useState('python')
-  // const [code, setCode] = useState(defaultCode[mode])
-  // const [input, setInput] = useState('')
+  // const [userCode, setUserCode] = useLocalStorage('userCode', '')
+  // const [mode, setMode] = useLocalStorage('mode', 'python')
+  // const [code, setCode] = useLocalStorage('code', defaultCode[mode])
+  // const [input, setInput] = useLocalStorage('input', '')
+  const [userCode, setUserCode] = useState('')
+  const [mode, setMode] = useState('python')
+  const [code, setCode] = useState(defaultCode[mode])
+  const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
   const [joinedSessionCode, setJoinedSessionCode] = useState('')
   const [userID, setUserID] = useState('')
   useEffect(() => {
     if (userCode === '') {
       axios
-        .get('http://localhost:9000/code')
+        .get('/code')
         .then(({ data }) => {
           setUserCode(data)
-          console.log('thik', data)
+          const code = `${data}-${new Date().getTime()}`
+          setUserID(code)
+          socket.emit('joinSession', {
+            mark: 'usercode',
+            channelID: data,
+            userID: code,
+          })
         })
         .catch((e) => console.log('error', e))
     }
-    const code = `${userCode}-${new Date().getTime()}`
-    setUserID(code)
-    socket.emit('joinSession', {
-      mark: 'usercode',
-      channelID: userCode,
-      userID: code,
-    })
   }, [])
 
   useEffect(() => {
@@ -61,10 +60,16 @@ const Homepage = () => {
       channelID: joinedSessionCode,
       userID,
     })
+
+    socket.on('realReceive', (data) => {
+      console.log('revice', data)
+    })
   }, [joinedSessionCode])
 
   useEffect(() => {
+    const channelID = joinedSessionCode || userCode
     socket.emit('realtime', {
+      channelID,
       userID,
       mode,
       code,
