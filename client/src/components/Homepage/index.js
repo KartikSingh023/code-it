@@ -71,8 +71,8 @@ const Homepage = () => {
 
   // non cached state vars
   const [output, setOutput] = useState('')
-  const [visible, setVisible] =
-    useState(true) /* state to toggle the navbar of the screen */
+  /* state to toggle the navbar of the screen */
+  const [visible, setVisible] = useState(true)
 
   //code run on press of F5
   useEffect(() => {
@@ -116,12 +116,13 @@ const Homepage = () => {
         })
         .catch((e) => console.log('error', e))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     //Check whether the current screen size is desktop or mobile
     if (window.screen.width < 500) {
       setVisible(false)
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // on change in [joinedSessionCode] effect
