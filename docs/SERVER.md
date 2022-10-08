@@ -27,7 +27,9 @@ The repository has a `production` branch available for hosting on the EC2 instan
 /server/routes/handler.js:
 -> using cors middleware with http://codebox.herokuapp.com as origin
 ```
+
 On EC2, make an Ubuntu Server Instance and SSH into it using the steps provided by AWS.
+
 ```
 $ ssh -i /path/to/privatekey.pem ubuntu@amazon-provided-dns.url
 $ sudo apt update
@@ -35,6 +37,7 @@ $ sudo apt upgrade
 ```
 
 Then make a new directory and initialise it as a git repository.
+
 ```
 $ mkdir codebox
 $ cd codebox
@@ -42,6 +45,7 @@ $ git init
 ```
 
 Then add the repository's origin as a remote, and checkout the production branch.
+
 ```
 $ git remote add origin https://github.com/nafees87n/codebox.git
 $ git pull origin production
@@ -49,6 +53,7 @@ $ git checkout production
 ```
 
 Lastly, we run the setup and start bash scripts to start the API.
+
 ```
 $ sudo bash ./setup.sh
 
@@ -57,7 +62,7 @@ $ sudo bash ./setup.sh
 $ sudo bash ./start.sh p
 ```
 
-***
+---
 
 For the client, a [seperate repository](https://github.com/aaryak-shah/rce-client) has been set up, that uses `heroku` as a remote. In essence, it is a very simple express application that serves the /build/index.js file of the client.
 
@@ -68,6 +73,7 @@ The client's request URLs have been updated to the IP address of the API: `http:
 To host this, we perform the following actions:
 
 First, we enter the project repository and create a heroku app
+
 ```
 $ cd rce-client/
 => Copy or pull client code into this folder's main branch.
@@ -79,6 +85,7 @@ $ heroku create $APP_NAME
 ```
 
 Confirm that the heroku remote has been added
+
 ```
 $ git remote
 => If heroku is not listed, run:
@@ -86,7 +93,9 @@ $ heroku git:remote -a $APP_NAME
 ```
 
 Lastly, assuming there are no untracked changes, we push the main branch to Heroku
+
 ```
 $ git push heroku main
 ```
+
 > NOTE: Do **NOT** use `$ heroku open` in the terminal or "Open app" on the Heroku dashboard to run the client app. It defaults to the `https` site that is currently incompatible. Instead follow this link http://codebox.herokuapp.com/

@@ -1,56 +1,51 @@
-
-
-.modal-box{
-    width: 15rem;
+.modal-box {
+  width: 15rem;
 }
 
-.modal-btn-bar{
-    box-sizing: border-box;
-    background-color: #002240;
-    border-radius: 3px;
-    display: flex;
-    justify-content: space-between;
-    padding:0 10px;
-    height: 5em;
-    
-   
+.modal-btn-bar {
+  box-sizing: border-box;
+  background-color: #002240;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  height: 5em;
 }
-.nav-btn{
-    cursor: pointer;
-    background: transparent;
-    border:none;
-    color: white;
+.nav-btn {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: white;
 }
 
-.modal-title,.modal-new-session{
-    color:#002240 ;
+.modal-title,
+.modal-new-session {
+  color: #002240;
 }
-#modal-session-input{
-    border-radius: 5px;
-    height: 2em;
+#modal-session-input {
+  border-radius: 5px;
+  height: 2em;
 }
-.black{
-    color:white;
-    border:2px solid #002240 ;
-    background: #002240;
-    margin-left: 10px;
-    border-radius: 5px;
-    text-align: center;
-    height: 2.8rem;
-    width: 4rem;
-    cursor: pointer;
+.black {
+  color: white;
+  border: 2px solid #002240;
+  background: #002240;
+  margin-left: 10px;
+  border-radius: 5px;
+  text-align: center;
+  height: 2.8rem;
+  width: 4rem;
+  cursor: pointer;
 }
 
-
-.rotate{
-    transform: rotate(45deg);
-   cursor: pointer;
-    border: none;
-    background: none;
-    font-size: 2.2em;
-    color: white;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-    text-align: center;
-  
+.rotate {
+  transform: rotate(45deg);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 2.2em;
+  color: white;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  text-align: center;
 }

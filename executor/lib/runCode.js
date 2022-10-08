@@ -30,7 +30,6 @@ const runCode = async (language, filePath) => {
       break
     }
     case 'py': {
-
       try {
         result = await exec(`cat ${filePath} | python3 ${filePath}.py`, {
           timeout: 5000,

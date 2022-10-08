@@ -49,7 +49,6 @@
   padding: 20px;
   border: 1px solid #888;
   width: 35%;
- 
 }
 
 /* .modal-btn-bar{
@@ -94,22 +93,19 @@
   align-items: center;
 }
 
-
 .nav-btn {
   border: none;
   margin: 5pt;
   margin-right: 10pt;
   color: #002240;
-  
+
   background-color: transparent;
   cursor: pointer;
 }
-.white{
+.white {
   color: white;
- margin-top: 20px;
+  margin-top: 20px;
 }
-
-
 
 .nav-btn:focus {
   outline: none;
