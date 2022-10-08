@@ -187,7 +187,7 @@ const Homepage = () => {
         code: code,
       })
       .then(({ data }) => {
-        setOutput(data.output)
+        setOutput(data.output.toString())
         //Set output color based on verdict 
         if(data.verdict==="error"){
           setOutputStyles({color:"red"})
