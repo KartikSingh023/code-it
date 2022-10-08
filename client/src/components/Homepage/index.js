@@ -149,6 +149,21 @@ const Homepage = () => {
       })
   }
 
+  /* states and fucntions to control the responsiveness of the screen */
+  const [visible,setVisible] = useState(true)
+  
+  //Check whether teh current screen size is desktop or mobile
+  useEffect(() => {
+    if(window.screen.width<500){
+      setVisible(false)
+    }
+  },[])
+  
+  //function to toggle menu for mobile view
+  const toggleMenu=()=>{
+    setVisible(!visible)
+  }
+
   // component return
   return (
     <>
@@ -164,9 +179,16 @@ const Homepage = () => {
           &gt;codeBox{' '}
           {joinedSessionCode !== '' ? 'joined: ' + joinedSessionCode : ''}
         </h1>
-        <div id="navigation">
+        <div id="navigation" className="hide_menu">
+        <button
+            className="nav-btn menu_btn"
+            onClick={toggleMenu}
+          >
+            <h2>Menu</h2>
+          </button>
           {joinedSessionCode !== '' ? (
             <button
+              style={{display:visible?'block':'none'}}
               className="nav-btn"
               onClick={() => {
                 socket.close()
@@ -183,6 +205,7 @@ const Homepage = () => {
             <></>
           )}
           <button
+            style={{display:visible?'block':'none'}}
             className="nav-btn"
             onClick={() => {
               document.getElementsByClassName('modal-bg')[0].id = ''
@@ -191,6 +214,7 @@ const Homepage = () => {
             <h2>session</h2>
           </button>
           <button
+            style={{display:visible?'block':'none'}}
             className="nav-btn"
             onClick={() =>
               window.open(CONSTANTS.DOCS)
@@ -199,12 +223,14 @@ const Homepage = () => {
             <h2>docs</h2>
           </button>
           <button
+            style={{display:visible?'block':'none'}}
             className="nav-btn"
             onClick={() => window.open(CONSTANTS.GITHUB_URL)}
           >
             <h2>github</h2>
           </button>
           <button
+            style={{display:visible?'block':'none'}}
             className="nav-btn"
             onClick={() => {
               localStorage.clear()
