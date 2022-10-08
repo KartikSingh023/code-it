@@ -43,6 +43,14 @@ const Homepage = () => {
   // non cached state vars
   const [output, setOutput] = useState('')
 
+  //code run on press of F5
+  useEffect(() => {
+    document.onkeydown = (keyDownEvent) => {
+      if (keyDownEvent.altKey && keyDownEvent.key == 'F5')
+        document.getElementById('run-btn').click()
+    }
+  })
+
   // on load effect
   useEffect(() => {
     var now = new Date()
