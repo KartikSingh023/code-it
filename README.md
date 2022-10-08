@@ -1,12 +1,11 @@
-# _codeBox_ - A Remote Code Executer
+# _code-it_ - A Remote Code Executer
 
-**Available at: http://codebox.herokuapp.com**
+
 
 > NOTE: Do **NOT** access the `https` version of the above site. The API server does not currently have an SSL certificate, and so the `https` client will not be able to communicate with the API due to the Mixed Content policy implemented in browsers.
 
 > The API is seperately accessible [here](http://13.235.81.188/code), for use with Postman or cURL. However it is recommended to use the heroku app linked before.
 
-![Client App Demo Gif](./docs/rce-demo.gif)
 
 ---
 
