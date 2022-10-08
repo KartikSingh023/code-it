@@ -41,3 +41,14 @@ deque    | iomanip   | iterator | map    | queue  | set  | stack | conio   | cty
 ```
 readline | buffer | string_decoder | timers | stream | util
 ```
+## Tech Stack:
+
+This RCE project combines various different technologies:
+
+- Node and Express - Server and Executer services are written using these
+
+- React - Client application is written with React
+
+- Docker/docker-compose - Containerising of the services and providing an isolated sandbox for code execution
+
+- Bash scripting - Convinience scripts for environment setup and project execution

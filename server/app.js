@@ -4,12 +4,13 @@
 const express = require('express')
 const socketIo = require('socket.io')
 const cors = require('cors')
-const subscribers = require('./socket.io/subscribers')
 const bodyParser = require('body-parser')
+
 // global variables initialised
 const PORT = 9000
 const app = express()
 const server = require('http').createServer(app)
+
 // middleware, routing
 app.use('/', require('./routes/handler'))
 //cors
@@ -23,29 +24,28 @@ const io = socketIo(server, {
     credentials: true,
   },
 })
+
+// socket listens to connection event
 io.on('connection', (client) => {
+  // when client emits a 'hostSession' event
   client.on('hostSession', (data) => {
     const { channelID } = data
+    // adds the client's ID to the room
     client.join(channelID)
   })
+  // when client emits a 'joinSession' event
   client.on('joinSession', (data) => {
     const { channelID } = data
+    // adds the client's ID to the room
     client.join(channelID)
+    // server emits initialLoad event to this new client in the room
     io.to(channelID).emit('initialLoad')
   })
+  // when client emits a 'realTime' event
   client.on('realtime', (data) => {
     const { channelID, mode, input, output, code } = data
+    // server emits 'realReceive' event to this client
     io.to(channelID).emit('realReceive', { mode, input, code, output })
-    // if (channelID && userID) {
-    //   const sid = subscribers.getReceiverByChannel(channelID, userID)
-    //   if (sid) {
-    //     console.log(sid.sid)
-    //     const receiverSocket = io.sockets.sockets.get(sid.sid)
-    //     // console.log(receiverSocket.get(sid))
-    //     // console.log(Object.keys(receiverSocket))
-    //     receiverSocket.emit('realReceive', { mode, input, code, output })
-    //   }
-    // }
   })
 })
 

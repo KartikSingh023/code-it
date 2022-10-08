@@ -92,9 +92,13 @@ This service simply executes the code file at the given location and returns the
 
 All user files generated for this execution are deleted by this service.
 
+The executor service doesn't create any files and it's purpose is simply to execute any file that it is requested to. For this reason, a client may not directly communicate with this service. Only the server can send requests over the container network.
+
 ### The Server:
 
 `server` is also an express API. The client can send a POST request to the `/code` endpoint.
+
+The React app for the client is now available, and will communicate with this server through the `axios` library.
 
 The request body here contains 4 keys:
 
@@ -107,6 +111,16 @@ The request body here contains 4 keys:
 - `input <String>` - User provided input for their code
 
 `key` can be entered manually as any random string using Postman or cURL. It can also be obtained by sending a GET request to `/code`. This system is utilised by the client to obtain a unique identifier for the session, which can be used for future expansion of RCE's features (for example an interview tool).
+
+The server also makes use of `socket.io` to maintain a realtime connection with a client. It makes a room for a new user, and allows other users to join these rooms.
+
+### The Client:
+
+`client` is any independent service capable of sending `GET` and `POST` requests. However, to be able to utilise the full feature set, a proper frontend is required. We have developed a React app for this purpose.
+
+The client maintains locally the session key and the user input data, in it's localStorage. `axios` is used to communicate with the server for http actions. This involves obtaining a key and sending code to be executed.
+
+It also utilises the `socket.io` client for a realtime communication with the server. This is used to create a realtime room with other client instances.
 
 #### Significance of the key:
 

@@ -1,17 +1,24 @@
+// imports
+// react
 import React, { useEffect, useState } from 'react'
+// libraries
 import AceEditor from 'react-ace'
 import axios from 'axios'
 import openSocket from 'socket.io-client'
+// ace
 import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/mode-c_cpp'
 import 'ace-builds/src-noconflict/mode-javascript'
-import 'ace-builds/src-noconflict/theme-cobalt'
 import 'ace-builds/src-noconflict/ext-language_tools'
+import 'ace-builds/src-noconflict/theme-cobalt'
+// custom
 import useLocalStorage from '../hooks/useLocalStorage'
-import ModalBox from './modalBox'
+import ModalBox from './ModalBox'
+// style
 import '../fonts/JetBrainsMono[wght].ttf'
-import './home.css'
+import './Homepage.css'
 
+// global vars
 var languages = ['python', 'c_cpp', 'javascript']
 const socket = openSocket('http://localhost:9000')
 const modes = { javascript: 'js', c_cpp: 'cpp', python: 'py' }
@@ -22,19 +29,42 @@ const defaultCode = {
   python: "print('hello rce')",
 }
 
+// component
 const Homepage = () => {
-  // const [userCode, setUserCode] = useLocalStorage('userCode', '')
-  // const [mode, setMode] = useLocalStorage('mode', 'python')
-  // const [code, setCode] = useLocalStorage('code', defaultCode[mode])
-  // const [input, setInput] = useLocalStorage('input', '')
-  const [userCode, setUserCode] = useState('')
-  const [mode, setMode] = useState('python')
-  const [code, setCode] = useState(defaultCode[mode])
-  const [input, setInput] = useState('')
+  // cached state vars
+  const [userCode, setUserCode] = useLocalStorage('userCode', '')
+  const [mode, setMode] = useLocalStorage('mode', 'python')
+  const [code, setCode] = useLocalStorage('code', defaultCode[mode])
+  const [input, setInput] = useLocalStorage('input', '')
+  const [joinedSessionCode, setJoinedSessionCode] = useLocalStorage(
+    'joinedSessionCode',
+    ''
+  )
+  // non cached state vars
   const [output, setOutput] = useState('')
-  const [joinedSessionCode, setJoinedSessionCode] = useState('')
 
+  // on load effect
   useEffect(() => {
+    var now = new Date()
+    var storeTime = JSON.parse(localStorage.getItem('na-rce-storeTime'))
+    if (Math.ceil(Math.abs(now - storeTime) / (1000 * 60 * 60 * 24)) > 1) {
+      setUserCode('')
+      setJoinedSessionCode('')
+      axios
+        .get('/code')
+        .then(({ data }) => {
+          setUserCode(data)
+
+          socket.emit('hostSession', {
+            channelID: data,
+          })
+        })
+        .catch((e) => console.log('error', e))
+      localStorage.setItem(
+        'na-rce-storeTime',
+        JSON.stringify(new Date().getTime())
+      )
+    }
     if (userCode === '') {
       axios
         .get('/code')
@@ -49,14 +79,15 @@ const Homepage = () => {
     }
   }, [])
 
+  // on change in [joinedSessionCode] effect
   useEffect(() => {
     console.log(joinedSessionCode)
-
     socket.emit('joinSession', {
       channelID: joinedSessionCode,
     })
   }, [joinedSessionCode])
 
+  // on change in [code, output, mode, input, userCode, joinedSessionCode] effect
   useEffect(() => {
     if (!joinedSessionCode) {
       socket.emit('realtime', {
@@ -78,6 +109,7 @@ const Homepage = () => {
     }
   }, [code, output, mode, input, userCode, joinedSessionCode])
 
+  // on change in [joinedSessionCode] effect
   useEffect(() => {
     if (joinedSessionCode) {
       socket.on('realReceive', (data) => {
@@ -89,11 +121,13 @@ const Homepage = () => {
     }
   }, [joinedSessionCode])
 
+  // language select handler
   const modeHandle = (e) => {
     setCode(defaultCode[e.target.value])
     setMode(e.target.value)
   }
 
+  // code run button handler
   const handlerun = () => {
     axios
       .post('/code', {
@@ -107,6 +141,7 @@ const Homepage = () => {
       })
   }
 
+  // component return
   return (
     <>
       <div className="modal-bg" id="hidden">
@@ -131,6 +166,7 @@ const Homepage = () => {
                 setInput('')
                 setOutput('')
                 setCode(defaultCode[mode])
+                window.location.reload()
               }}
             >
               <h2>disconnect</h2>
@@ -150,7 +186,7 @@ const Homepage = () => {
             className="nav-btn"
             onClick={() =>
               window.open(
-                'https://github.com/nafees87n/remote-code-executor/blob/main/DOCS.md'
+                'https://github.com/nafees87n/remote-code-executor/blob/main/docs/DOCS.md'
               )
             }
           >
@@ -170,24 +206,32 @@ const Homepage = () => {
         <div id="code-header">
           <h2 className="region-title">code</h2>
           <h2 className="region-title-divider">|</h2>
-          <select
-            id="language-select"
-            defaultValue={mode}
-            value={mode}
-            onChange={modeHandle}
-          >
-            {languages.map((lang) => {
-              return (
-                <option key={lang} value={lang}>
-                  {lang.toUpperCase()}
-                </option>
-              )
-            })}
-          </select>
-          <h2 className="region-title-divider">|</h2>
-          <button id="run-btn" onClick={handlerun}>
-            RUN
-          </button>
+          {joinedSessionCode === '' ? (
+            <>
+              <select
+                id="language-select"
+                defaultValue={mode}
+                value={mode}
+                onChange={modeHandle}
+              >
+                {languages.map((lang) => {
+                  return (
+                    <option key={lang} value={lang}>
+                      {lang.toUpperCase()}
+                    </option>
+                  )
+                })}
+              </select>
+              <h2 className="region-title-divider">|</h2>
+              <button id="run-btn" onClick={handlerun}>
+                RUN
+              </button>{' '}
+            </>
+          ) : (
+            <>
+              <h2 className="region-title">{mode}</h2>
+            </>
+          )}
         </div>
         <div className="general-editor">
           <AceEditor
