@@ -12,15 +12,15 @@ import 'ace-builds/src-noconflict/mode-javascript'
 import 'ace-builds/src-noconflict/ext-language_tools'
 import 'ace-builds/src-noconflict/theme-cobalt'
 // custom
-import useLocalStorage from '../hooks/useLocalStorage'
-import ModalBox from './ModalBox'
+import useLocalStorage from '../../hooks/useLocalStorage'
+import ModalBox from '../ModalBox'
 // style
-import '../fonts/JetBrainsMono[wght].ttf'
+import '../../fonts/JetBrainsMono[wght].ttf'
 import './Homepage.css'
 
 // global vars
 var languages = ['python', 'c_cpp', 'javascript']
-const socket = openSocket('http://localhost:9000')
+const socket = openSocket('http://server:9000')
 const modes = { javascript: 'js', c_cpp: 'cpp', python: 'py' }
 const defaultCode = {
   javascript: "console.log('hello rce')",
@@ -46,7 +46,7 @@ const Homepage = () => {
   //code run on press of F5
   useEffect(() => {
     document.onkeydown = (keyDownEvent) => {
-      if (keyDownEvent.altKey && keyDownEvent.key == 'F5')
+      if (keyDownEvent.altKey && keyDownEvent.key === 'F5')
         document.getElementById('run-btn').click()
     }
   })
@@ -85,6 +85,7 @@ const Homepage = () => {
         })
         .catch((e) => console.log('error', e))
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // on change in [joinedSessionCode] effect
@@ -126,6 +127,7 @@ const Homepage = () => {
         setCode(data.code)
       })
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [joinedSessionCode])
 
   // language select handler
@@ -201,9 +203,7 @@ const Homepage = () => {
           </button>
           <button
             className="nav-btn"
-            onClick={() =>
-              window.open('https://github.com/nafees87n/codebox')
-            }
+            onClick={() => window.open('https://github.com/nafees87n/codebox')}
           >
             <h2>github</h2>
           </button>
