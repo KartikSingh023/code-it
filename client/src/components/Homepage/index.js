@@ -22,10 +22,10 @@ import './Homepage.css'
 const CONSTANTS = require('../../constants.js')
 
 // global vars
-var languages = ["python", "c_cpp", "javascript"];
-const socket = openSocket(CONSTANTS.SERVER_URL);
-const modes = CONSTANTS.MODES;
-const defaultCode = CONSTANTS.DEFAULT_CODE;
+var languages = ['python', 'c_cpp', 'javascript']
+const socket = openSocket(CONSTANTS.SERVER_URL)
+const modes = CONSTANTS.MODES
+const defaultCode = CONSTANTS.DEFAULT_CODE
 
 // component
 const Homepage = () => {
@@ -216,9 +216,7 @@ const Homepage = () => {
           <button
             style={{display:visible?'block':'none'}}
             className="nav-btn"
-            onClick={() =>
-              window.open(CONSTANTS.DOCS)
-            }
+            onClick={() => window.open(CONSTANTS.DOCS)}
           >
             <h2>docs</h2>
           </button>

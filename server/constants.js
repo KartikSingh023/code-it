@@ -1,7 +1,7 @@
 const CONSTANTS = {
   PORT: 9000,
   USERSTORAGEPATH: '/storage/',
-  CLIENT_URL:'http://localhost:3000',
+  CLIENT_URL: 'http://localhost:3000',
 
   /*CONSTANTS FOR CODE FILE*/
   CPP: {
@@ -25,7 +25,7 @@ const CONSTANTS = {
       'stack',
       'conio',
       'ctype',
-    ]
+    ],
   },
   JS: {
     REGEX: /require\s*\(\s*['"]\s*(.+)\s*['"]\s*\)/gim,
@@ -47,9 +47,8 @@ const CONSTANTS = {
   /*CONSTANTS FOR SOCKET*/
   SOCKET: {
     ORIGIN: 'http://localhost:3000',
-    METHODS: ['GET', 'POST']
-  }
-
+    METHODS: ['GET', 'POST'],
+  },
 }
 
-module.exports = CONSTANTS;
+module.exports = CONSTANTS

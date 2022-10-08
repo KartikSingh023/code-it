@@ -27,5 +27,5 @@ socket.initializer(socketIo, server)
 
 // server listening on PORT
 server.listen(PORT, () => {
-    console.log(`app listening at http://localhost:${PORT}`)
+  console.log(`app listening at http://localhost:${PORT}`)
 })
