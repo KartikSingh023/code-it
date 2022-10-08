@@ -1,4 +1,4 @@
-# *codeBox* - A Remote Code Executer
+# _codeBox_ - A Remote Code Executer
 
 **Available at: http://codebox.herokuapp.com**
 
@@ -8,7 +8,13 @@
 
 ![Client App Demo Gif](./docs/rce-demo.gif)
 
-***
+---
+
+## Contribute
+
+We are accepting contributions to codeBox! Check out [CONTRIBUTING.md](./CONTRIBUTING.md) to learn more. Make sure to read our [docs](./docs/DOCS.md) to learn about the set up process.
+
+Feel free to make an issue if you have any inquiry or doubt. Use the `question` label for this.
 
 ## What Is It?
 
@@ -26,6 +32,7 @@ The client application, linked above, is available to access the API. It enables
 - Live sessions. Each user can access and share their session's ID through the **`session`** menu in the navbar - Users can paste a session ID to join someone else's room from the same. (Only available through the client app)
 
 ## Architecture
+
 ![Codebox Architecture](docs/codebox-rce-architecture.png)
 
 ## Set Up
@@ -75,15 +82,20 @@ The API accepts POST requests at the `localhost:9000/code` or `http://13.235.81.
 Currently, code validation takes place by selectively rejecting or accepting libraries depending on the language. The list of libraries of concern are listed below
 
 #### Python (Rejected Libraries):
+
 ```
 os | subprocess | shlex | xml | pickle
 ```
+
 #### C++ (Accepted Libraries):
+
 ```
 iostream | algorithm | stdio    | cstdio | vector | math | cmath | cstring | string |
 deque    | iomanip   | iterator | map    | queue  | set  | stack | conio   | ctype
 ```
+
 #### Node/Javascript (Accepted Libraries):
+
 ```
 readline | buffer | string_decoder | timers | stream | util
 ```

@@ -103,3 +103,9 @@ Use the aforementioned guidelines to help you write the commit message.
 Back in GitHub land, open your forked repository and head to the Pull Requests tab. Then click on "New Pull Request"
 
 Ensure you are merging from the issue branch in your repository, to the main branch in the original repository. Add a sensible title and description of your changes, and submit the PR.
+
+# Make Your Own Issue
+
+We encourage you to use this application and contribute to its development. In the process, if you find any bugs or have feature requests, and wish to contribute in that aspect, feel free to start an issue on our GitHub.
+
+You can also make an issue if you have any inquiry or doubt. Use the `question` label for this.
