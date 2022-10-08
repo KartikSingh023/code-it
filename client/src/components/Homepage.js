@@ -81,7 +81,6 @@ const Homepage = () => {
 
   // on change in [joinedSessionCode] effect
   useEffect(() => {
-    console.log(joinedSessionCode)
     socket.emit('joinSession', {
       channelID: joinedSessionCode,
     })

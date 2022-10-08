@@ -44,8 +44,7 @@ const cppHandler = async (key, storagePath) => {
 
   // at this point, we have validated the code and run execute()
   const result = await execute('cpp', filePath)
-  console.log('retruning to handler with result')
-  console.log(result)
+
   return result
 }
 
