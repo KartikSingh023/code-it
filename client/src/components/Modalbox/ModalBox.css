@@ -1,5 +1,9 @@
 
 
+.modal-box{
+    width: 15rem;
+}
+
 .modal-btn-bar{
     box-sizing: border-box;
     background-color: #002240;
@@ -7,6 +11,7 @@
     border-radius: 3px;
     display: flex;
     justify-content: space-between;
+    text-align: center;
 }
 .nav-btn{
     cursor: pointer;
@@ -31,4 +36,13 @@
 }
 input,button{
     height:2.5em;
+}
+
+.rotate{
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+   right: 0;
+   font-size: 40px;
+    
 }

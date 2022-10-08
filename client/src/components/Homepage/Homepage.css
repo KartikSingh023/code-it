@@ -48,7 +48,8 @@
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
+  width: 40%;
+ 
 }
 
 /* .modal-btn-bar{
@@ -106,6 +107,7 @@
 .white{
   color: white;
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 
