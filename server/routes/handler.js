@@ -1,7 +1,7 @@
 // package imports
 const express = require('express')
+const app = express()
 const fs = require('fs')
-const bodyParser = require('body-parser')
 const pythonHandler = require('../languages/python')
 const cppHandler = require('../languages/cpp')
 const jsHandler = require('../languages/javascript')
@@ -10,10 +10,6 @@ const crypto = require('crypto')
 // global variables initialisation
 const USERSTORAGEPATH = '/storage/'
 const router = express.Router()
-
-// middleware
-router.use(bodyParser.json()) // for parsing application/json
-router.use(bodyParser.urlencoded({ extended: true }))
 
 // routes
 
@@ -37,7 +33,6 @@ router.post('/code', (req, res) => {
     input, // user's input string to be stored in storage/input
     code, // user's code string to be stored in storage/code.xyz
   } = req.body
-
   const inputFilePath = USERSTORAGEPATH + key
   const codeFilePath = USERSTORAGEPATH + key
 
@@ -61,7 +56,6 @@ router.post('/code', (req, res) => {
         case 'py': {
           pythonHandler(key, USERSTORAGEPATH)
             .then((result) => {
-
               const { stdout, stderr, code, signal } = result
               const err_send = stderr || signal || code
               if (err_send) {
@@ -77,7 +71,6 @@ router.post('/code', (req, res) => {
         case 'cpp': {
           cppHandler(key, USERSTORAGEPATH)
             .then((result) => {
-
               const { stdout, stderr, code, signal } = result
               const err_send = stderr || signal || code
               if (err_send) {
@@ -86,7 +79,6 @@ router.post('/code', (req, res) => {
               res.send(stdout)
             }) // callback responds result of successful execution
             .catch((err) => {
-
               res.send(err)
             }) // callback responds result of failed execution
           break
