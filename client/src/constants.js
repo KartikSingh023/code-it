@@ -1,6 +1,6 @@
-module.exports = {
+const CONSTANTS = {
   PREFIX: 'na-rce-',
-  SOCKET: "http://localhost:9000",
+  SERVER_URL: "http://localhost:9000",
   DOCS: "https://github.com/nafees87n/codebox/blob/main/docs/DOCS.md",
   GITHUB_URL: "https://github.com/nafees87n/codebox",
   MODES: {
@@ -14,3 +14,5 @@ module.exports = {
     python: "print('hello rce')",
   }
 }
+
+module.exports = CONSTANTS

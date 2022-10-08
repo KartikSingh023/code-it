@@ -1,6 +1,7 @@
-module.exports = {
+const CONSTANTS = {
   PORT: 9000,
   USERSTORAGEPATH: '/storage/',
+  CLIENT_URL:'http://localhost:3000',
 
   /*CONSTANTS FOR CODE FILE*/
   CPP: {
@@ -46,8 +47,9 @@ module.exports = {
   /*CONSTANTS FOR SOCKET*/
   SOCKET: {
     ORIGIN: 'http://localhost:3000',
-    METHODS: ['GET', 'POST'],
-    HEADERS: ['my-custom-header']
+    METHODS: ['GET', 'POST']
   }
 
 }
+
+module.exports = CONSTANTS;
