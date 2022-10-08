@@ -8,7 +8,7 @@
 
 The `server` (and `executor`), make up the API. This is hosted on an AWS Elastic Cloud Compute (EC2) instance, available [here](http://13.126.57.93/) (http). The API listens over HTTP (on port 80).
 
-The `client` is hosted via Heroku, deployed [here](http://codebox-rce.herokuapp.com) (http). Heroku also builds an HTTPS site, however it is currently incompatible with our API.
+The `client` is hosted via Heroku, deployed [here](http://codebox.herokuapp.com) (http). Heroku also builds an HTTPS site, however it is currently incompatible with our API.
 
 ### Setup Process:
 
@@ -20,12 +20,12 @@ The repository has a `production` branch available for hosting on the EC2 instan
 
 
 /server/app.js:
--> using client url http://codebox-rce.herokuapp.com instead of localhost:3000.
+-> using client url http://codebox.herokuapp.com instead of localhost:3000.
 -> using the same as origin for cors middleware
 
 
 /server/routes/handler.js:
--> using cors middleware with http://codebox-rce.herokuapp.com as origin
+-> using cors middleware with http://codebox.herokuapp.com as origin
 ```
 On EC2, make an Ubuntu Server Instance and SSH into it using the steps provided by AWS.
 ```
@@ -89,4 +89,4 @@ Lastly, assuming there are no untracked changes, we push the main branch to Hero
 ```
 $ git push heroku main
 ```
-> NOTE: Do **NOT** use `$ heroku open` in the terminal or "Open app" on the Heroku dashboard to run the client app. It defaults to the `https` site that is currently incompatible. Instead follow this link http://codebox-rce.herokuapp.com/
+> NOTE: Do **NOT** use `$ heroku open` in the terminal or "Open app" on the Heroku dashboard to run the client app. It defaults to the `https` site that is currently incompatible. Instead follow this link http://codebox.herokuapp.com/

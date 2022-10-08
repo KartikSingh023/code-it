@@ -1,6 +1,6 @@
 # *codeBox* - A Remote Code Executer
 
-**Available at: http://codebox-rce.herokuapp.com**
+**Available at: http://codebox.herokuapp.com**
 
 > NOTE: Do **NOT** access the `https` version of the above site. The API server does not currently have an SSL certificate, and so the `https` client will not be able to communicate with the API due to the Mixed Content policy implemented in browsers.
 
@@ -30,7 +30,7 @@ The client application, linked above, is available to access the API. It enables
 
 ## Set Up
 
-User set up for this project is not required, as a deployed version can be accessed through the [client app](http://codebox-rce.herokuapp.com) (linked at the top).
+User set up for this project is not required, as a deployed version can be accessed through the [client app](http://codebox.herokuapp.com) (linked at the top).
 
 However if you wish to set the project up yourself, documentation has been provided in the `docs` folder. Check out [DOCS.md](https://github.com/nafees87n/remote-code-executor/blob/main/docs/DOCS.md) for a detailed reference. It describes local machine setup and service functioning. Read [SERVER.md](https://github.com/nafees87n/remote-code-executor/blob/main/docs/SERVER.md) for documentation on deployment.
 
