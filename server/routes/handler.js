@@ -59,9 +59,9 @@ router.post('/code', (req, res) => {
               const { stdout, stderr, code, signal } = result
               const err_send = stderr || signal || code
               if (err_send) {
-                res.send({output:err_send,verdict:"error"})
+                res.send({ output: err_send, verdict: 'error' })
               }
-              res.send({output:stdout,verdict:"success"})
+              res.send({ output: stdout, verdict: 'success' })
             }) // callback responds result of successful execution
             .catch((err) => res.send(err)) // callback responds result of failed execution
           break
@@ -74,9 +74,9 @@ router.post('/code', (req, res) => {
               const { stdout, stderr, code, signal } = result
               const err_send = stderr || signal || code
               if (err_send) {
-                res.send({output:err_send,verdict:"error"})
+                res.send({ output: err_send, verdict: 'error' })
               }
-              res.send({output:stdout,verdict:"success"})
+              res.send({ output: stdout, verdict: 'success' })
             }) // callback responds result of successful execution
             .catch((err) => {
               res.send(err)
@@ -91,9 +91,9 @@ router.post('/code', (req, res) => {
               const { stdout, stderr, code, signal } = result
               const err_send = stderr || signal || code
               if (err_send) {
-                res.send({output:err_send,verdict:"error"})
+                res.send({ output: err_send, verdict: 'error' })
               }
-              res.send({output:stdout,verdict:"success"})
+              res.send({ output: stdout, verdict: 'success' })
             }) // callback responds result of successful execution
             .catch((err) => res.send(err)) // callback responds result of failed execution
           // break
