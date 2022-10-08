@@ -6,7 +6,9 @@ This project makes use of `docker`. However the code is modularized enough that 
 
 _Linux users rejoice, for you have access to the convinient bash scripts to help you setup and run the project_
 
-If you have any troubles setting up the project, feel free to contact the developers. Happy contributing!
+If you have any troubles setting up the project, feel free to contact the developers.
+
+Happy Contributing!
 
 # Quick Links
 
