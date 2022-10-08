@@ -5,8 +5,13 @@ import React, { useEffect, useState } from 'react'
 import AceEditor from 'react-ace'
 import axios from 'axios'
 import openSocket from 'socket.io-client'
-import { AiFillGithub } from "react-icons/ai";
-import { FiClock,FiFileText,FiRotateCcw,FiAlignJustify } from "react-icons/fi";
+import { AiFillGithub } from 'react-icons/ai'
+import {
+  FiClock,
+  FiFileText,
+  FiRotateCcw,
+  FiAlignJustify,
+} from 'react-icons/fi'
 
 // ace
 import 'ace-builds/src-noconflict/mode-python'
@@ -206,12 +211,15 @@ const Homepage = () => {
       </div>
       <div className="nav">
         <h1 id="brand">
-          {"<CodeBox/>"}
+          {'<CodeBox/>'}
           {joinedSessionCode !== '' ? 'joined: ' + joinedSessionCode : ''}
         </h1>
         <div id="navigation" className="hide_menu">
           <button className="nav-btn menu_btn" onClick={toggleMenu}>
-            <h2> <FiAlignJustify/> Menu</h2>
+            <h2>
+              {' '}
+              <FiAlignJustify /> Menu
+            </h2>
           </button>
 
           <select
@@ -255,21 +263,29 @@ const Homepage = () => {
               document.getElementsByClassName('modal-bg')[0].id = ''
             }}
           >
-            <h2> <FiClock/> Session</h2>
+            <h2>
+              {' '}
+              <FiClock /> Session
+            </h2>
           </button>
           <button
             style={{ display: visible ? 'block' : 'none' }}
             className="nav-btn"
             onClick={() => window.open(CONSTANTS.DOCS)}
           >
-            <h2> <FiFileText/> Documentation</h2>
+            <h2>
+              {' '}
+              <FiFileText /> Documentation
+            </h2>
           </button>
           <button
             style={{ display: visible ? 'block' : 'none' }}
             className="nav-btn"
             onClick={() => window.open(CONSTANTS.GITHUB_URL)}
           >
-            <h2><AiFillGithub/>  GitHub</h2>
+            <h2>
+              <AiFillGithub /> GitHub
+            </h2>
           </button>
           <button
             style={{ display: visible ? 'block' : 'none' }}
@@ -279,7 +295,10 @@ const Homepage = () => {
               window.location.reload()
             }}
           >
-            <h2> <FiRotateCcw/> Reset</h2>
+            <h2>
+              {' '}
+              <FiRotateCcw /> Reset
+            </h2>
           </button>
         </div>
       </div>
