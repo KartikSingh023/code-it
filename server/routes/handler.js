@@ -67,7 +67,10 @@ router.post('/code', (req, res) => {
             .then((result) => {
               console.log('responding to client with result')
               console.log(result)
-              res.send(result)
+              if (result.stderr) {
+                res.send(result.stderr.stderr)
+              }
+              res.send(result.stdout)
             }) // callback responds result of successful execution
             .catch((err) => res.send(err)) // callback responds result of failed execution
           break
@@ -80,7 +83,10 @@ router.post('/code', (req, res) => {
             .then((result) => {
               console.log('responding to client with result')
               console.log(result)
-              res.send(result)
+              if (result.stderr) {
+                res.send(result.stderr)
+              }
+              res.send(result.stdout)
             }) // callback responds result of successful execution
             .catch((err) => {
               console.log('responding to client with err')
@@ -93,7 +99,12 @@ router.post('/code', (req, res) => {
         // node.js
         case 'js': {
           jsHandler(key, USERSTORAGEPATH)
-            .then((result) => res.send(result)) // callback responds result of successful execution
+            .then((result) => {
+              if (result.stderr) {
+                res.send(result.stderr)
+              }
+              res.send(result.stdout)
+            }) // callback responds result of successful execution
             .catch((err) => res.send(err)) // callback responds result of failed execution
           // break
         }

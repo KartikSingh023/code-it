@@ -4,7 +4,8 @@ const fs = require('fs')
 
 const runCode = async (language, filePath) => {
   console.log('runCode called')
-  var result = { stderr: 'no output' }
+  // var result = { stderr: 'no output' }
+  let result
   switch (language) {
     case 'cpp': {
       console.log('c++ exec')

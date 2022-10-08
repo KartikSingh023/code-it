@@ -34,7 +34,7 @@ const Homepage = () => {
         input: input,
         code: code,
       })
-      .then((res) => setOutput(res.data.stdout))
+      .then(({ data }) => setOutput(data))
   }
 
   return (
@@ -68,9 +68,7 @@ const Homepage = () => {
               fontSize={18}
               showPrintMargin={false}
               onChange={(val) => setCode(val)}
-              // onChange={onChange}
-              name="UNIQUE_ID_OF_DIV"
-              //   editorProps={{ $blockScrolling: true }}
+              name="code_editor"
               setOptions={{
                 enableBasicAutocompletion: true,
                 enableLiveAutocompletion: true,
@@ -91,6 +89,7 @@ const Homepage = () => {
                 height="100%"
                 width="100%"
                 value={input}
+                name="input_editor"
                 onChange={(val) => setInput(val)}
                 fontSize={18}
                 showPrintMargin={false}
@@ -109,6 +108,7 @@ const Homepage = () => {
                 height="100%"
                 width="100%"
                 value={output}
+                name="output_editor"
                 fontSize={18}
                 showPrintMargin={false}
                 readOnly
