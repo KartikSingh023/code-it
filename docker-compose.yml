@@ -1,10 +1,10 @@
 version: '3.8'
 services:
-  #react development server
-  # client:
-  #   build: ./client
-  #   ports:
-  #     - '3000:3000'
+  # react development server
+  client:
+    build: ./client
+    ports:
+      - '3000:3000'
   # server container manages client requests
   server:
     build: ./server
