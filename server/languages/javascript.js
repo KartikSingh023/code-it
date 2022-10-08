@@ -4,22 +4,18 @@
 const isValid = require('../lib/valid')
 const execute = require('../lib/execute')
 
+//constants
+const {JS} = require('../constants.js')
+
 // execution handling
 const jsHandler = async (key, storagePath) => {
   const filePath = storagePath + key
 
   // RegExp for require(<foo>) statement sanitisation
-  const importRE = /require\s*\(\s*['"]\s*(.+)\s*['"]\s*\)/gim
+  const importRE = JS.REGEX
 
   // list of acceptable libraries
-  const acceptList = [
-    'readline',
-    'buffer',
-    'string_decoder',
-    'timers',
-    'stream',
-    'util',
-  ]
+  const acceptList = JS.ACCEPT_LIST
 
   // code validity check
   if (!(await isValid(filePath + '.js', false, acceptList, importRE, ''))) {

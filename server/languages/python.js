@@ -4,18 +4,19 @@
 const isValid = require('../lib/valid')
 const execute = require('../lib/execute')
 
+const {PYTHON} = require('../constants.js')
+
 // execution handling
 const pythonHandler = async (key, storagePath) => {
   const filePath = storagePath + key
 
   // RegExp for import <foo> statement sanitisation
-  const basicImportRE = /import\s+(.+)/gim
-
+  const basicImportRE = PYTHON.BASIC_REGEX
   // RegExp for import <bar> from <foo> statement sanitisation
-  const specificImportRE = /import.+from\s+(.+)/gim
+  const specificImportRE = PYTHON.SPECIFIC_REGEX
 
   // list of disabled libraries
-  const rejectList = ['os', 'subprocess', 'shlex', 'xml', 'pickle']
+  const rejectList = PYTHON.REJECT_LIST
 
   // code validity check
   if (

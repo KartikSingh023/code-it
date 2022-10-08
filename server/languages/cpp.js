@@ -4,34 +4,18 @@
 const isValid = require('../lib/valid')
 const execute = require('../lib/execute')
 
+//constants
+const {CPP} = require('../constants.js')
+
 // execution handling
 
 const cppHandler = async (key, storagePath) => {
   const filePath = storagePath + key
   // RegExp for #include <foo> statement sanitisation
-  const importRE = /#include\s*<([\w^h]*).?h?>/gim
+  const importRE = CPP.REGEX
 
   // list of acceptable libraries
-  const acceptList = [
-    'iostream',
-    'algorithm',
-    'stdio',
-    'cstdio',
-    'vector',
-    'math',
-    'cmath',
-    'cstring',
-    'string',
-    'deque',
-    'iomanip',
-    'iterator',
-    'map',
-    'queue',
-    'set',
-    'stack',
-    'conio',
-    'ctype',
-  ]
+  const acceptList = CPP.ACCEPT_LIST
 
   // code validity check
   if (!(await isValid(filePath + '.cpp', false, acceptList, importRE, ''))) {

@@ -5,9 +5,9 @@ const pythonHandler = require('../languages/python')
 const cppHandler = require('../languages/cpp')
 const jsHandler = require('../languages/javascript')
 const crypto = require('crypto')
+const {USERSTORAGEPATH} = require('../constants.js')
 
 // global variables initialisation
-const USERSTORAGEPATH = '/storage/'
 const router = express.Router()
 
 // routes
