@@ -6,6 +6,8 @@
 
 > The API is seperately accessible [here](http://13.126.57.93/code), for use with Postman or cURL. However it is recommended to use the heroku app linked before.
 
+![Client App Demo Gif](./docs/rce-demo.gif)
+
 ***
 
 ## What Is It?
