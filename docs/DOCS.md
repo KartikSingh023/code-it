@@ -2,7 +2,7 @@
 
 ## Setting up the application
 
-> NOTE: As mentioned before, set up is not required. This guide is aimed at development and testing of the service rather than for the end user.
+> NOTE: As mentioned before, set up is not required. This guide is aimed at development, contribution and testing of the service rather than for the end user.
 >
 > This file describes the local machine setup. Both the server and client will be created on localhost. As such, the installation will also take place on the user's machine. Please refer to [SERVER.md](https://github.com/nafees87n/codebox/blob/main/docs/SERVER.md) to learn about hosting the applcation remotely
 
@@ -10,13 +10,15 @@
 
 The application can be installed locally by cloning this repository, and checking out the `main` branch.
 
-For Linux users who do not have docker engine and docker-compose set up on their device, the provided convenience script `setup.sh` can be used to quickly install the dependencies by running the following command:
+For **Linux** users who do not have docker engine and docker-compose set up on their device, the provided convenience script `setup.sh` can be used to quickly install the dependencies by running the following command:
+
 ```
 $ sudo bash ./setup.sh
 ```
+
 > NOTE: This script will also handle the permissions for docker to function normally. You will be prompted to reboot your device at the end, it is advisable to accept as a reboot is required to apply all the changes.
 
-***
+---
 
 In case you cannot, or choose to not run the bash script, you can follow the steps below, including the "Permissions" section.
 
@@ -39,11 +41,22 @@ Alternatively, we can prepend all docker commands with `sudo`, or run them in a 
 
 Reboot the host machine.
 
+---
+
+### Windows Set Up
+
+Docker must be installed as per the instructions on the website.
+
+- Docker Desktop (Includes docker engine and compose): https://docs.docker.com/desktop/windows/install/
+
+> To confirm that you have docker-compose after installing Docer Desktop, simply run `docker-compose --version` in a terminal.
+
 ## Starting the application
 
-> The API will spawn on `localhost:9000` and the client app on `localhost:3000`
+> The API will be available on `localhost:9000` and the client app on `localhost:3000`
 
 Start a terminal and redirect into the project repository:
+
 ```
 $ cd /path/to/repo/codebox/
 ```
@@ -65,7 +78,9 @@ The mode can directly be provided to the command as an argument:
 $ ./start.sh p
 ```
 
-### Using Docker Commands:
+### Using Docker Commands [**Windows Compatible**, Linux/Unix]:
+
+> If you cannot run the bash script, the following commands may be used to start the application.
 
 The project uses a docker volume called `userdata` to store any user generated files [code, input, a.out files]. We can create this volume as follows:
 
