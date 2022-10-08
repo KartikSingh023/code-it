@@ -9,10 +9,11 @@ import 'ace-builds/src-noconflict/ext-language_tools'
 
 const languages = ['python', 'c_cpp', 'javascript']
 const modes = { javascript: 'js', c_cpp: 'cpp', python: 'py' }
+
 const defaultCode = {
   javascript: "console.log('hello rce')",
   c_cpp:
-    '#include <iostream>\n\nint main() {\n\tstd::cout << "hello rce";\n\treturn 0;\n}',
+    '#include <iostream>\nusing namespace std;\n\nint main() {\n\tstd::cout << "hello rce";\n\treturn 0;\n}',
   python: "print('hello rce')",
 }
 

@@ -12,7 +12,7 @@ const runCode = async (language, filePath) => {
       try {
         result = await exec(
           `g++ -o ${filePath}.out ${filePath}.cpp && ${filePath}.out < ${filePath}`,
-          { timeout: 3000, maxBuffer: 1024 * 1024 * 5 }
+          { timeout: 1000, maxBuffer: 1024 * 1024 * 5 }
         )
         console.log(result)
         fs.promises.unlink(filePath + '.out')

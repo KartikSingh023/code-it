@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 // GET handler for /code
 router.get('/code', (req, res) => {
   const key = crypto.randomBytes(5).toString('hex') // provides a unique key to a client
-  res.send(key) 
+  res.send(key)
 })
 
 // POST handler for /code
@@ -68,10 +68,12 @@ router.post('/code', (req, res) => {
             .then((result) => {
               console.log('responding to client with result')
               console.log(result)
-              if (result.stderr) {
-                res.send(result.stderr)
+              const { stdout, stderr, code, signal } = result
+              const err_send = stderr || signal || code
+              if (err_send) {
+                res.send(err_send)
               }
-              res.send(result.stdout)
+              res.send(stdout)
             }) // callback responds result of successful execution
             .catch((err) => res.send(err)) // callback responds result of failed execution
           break
@@ -84,10 +86,12 @@ router.post('/code', (req, res) => {
             .then((result) => {
               console.log('responding to client with result')
               console.log(result)
-              if (result.stderr) {
-                res.send(result.stderr)
+              const { stdout, stderr, code, signal } = result
+              const err_send = stderr || signal || code
+              if (err_send) {
+                res.send(err_send)
               }
-              res.send(result.stdout)
+              res.send(stdout)
             }) // callback responds result of successful execution
             .catch((err) => {
               console.log('responding to client with err')
@@ -101,10 +105,12 @@ router.post('/code', (req, res) => {
         case 'js': {
           jsHandler(key, USERSTORAGEPATH)
             .then((result) => {
-              if (result.stderr) {
-                res.send(result.stderr)
+              const { stdout, stderr, code, signal } = result
+              const err_send = stderr || signal || code
+              if (err_send) {
+                res.send(err_send)
               }
-              res.send(result.stdout)
+              res.send(stdout)
             }) // callback responds result of successful execution
             .catch((err) => res.send(err)) // callback responds result of failed execution
           // break
