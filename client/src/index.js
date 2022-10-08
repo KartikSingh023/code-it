@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
-import Homepage from './components'
+import Homepage from './components/home'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(

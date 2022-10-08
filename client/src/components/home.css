@@ -1,0 +1,167 @@
+* {
+  font-family: 'JetBrains Mono';
+}
+
+.ace_editor {
+  font-family: monospace;
+  line-height: 26px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #002240;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.nav {
+  grid-column: 1 / 4;
+  grid-row: 1 / 1;
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#brand {
+  font-weight: bold;
+  margin: 5pt;
+  margin-left: 10pt;
+}
+
+#navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.nav-btn {
+  border: none;
+  margin: 5pt;
+  margin-right: 10pt;
+  background-color: transparent;
+}
+
+.nav-btn:hover {
+  color: #002240;
+  text-decoration: underline;
+}
+
+.nav-btn:focus {
+  outline: none;
+}
+
+#workspace {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 3fr;
+}
+
+.code-region {
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  padding-left: 5pt;
+  padding-bottom: 5pt;
+}
+
+#code-header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: #002240;
+  color: white;
+  flex: 1;
+  border-bottom: 3pt solid #011629;
+}
+
+.region-title {
+  padding-left: 10pt;
+  font-weight: normal;
+}
+
+.region-title-divider {
+  padding-left: 10pt;
+  font-weight: lighter;
+}
+
+#language-select {
+  padding-left: 10pt;
+  background-color: #002240;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+#language-select:hover {
+  outline: none;
+}
+
+#run-btn {
+  background-color: #002240;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+#run-btn:hover {
+  text-decoration: underline;
+}
+
+/* #io-region {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+} */
+
+.input-region {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.output-region {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 5pt;
+}
+
+.general-header {
+  background-color: #002240;
+  color: white;
+  justify-content: left;
+  border-bottom: 3pt solid #011629;
+  flex: 1;
+}
+
+.general-editor {
+  height: 100%;
+  width: 100%;
+}

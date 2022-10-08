@@ -41,5 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://server:9000"
+  "proxy": "http://localhost:9000"
 }
