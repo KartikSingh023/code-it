@@ -73,6 +73,7 @@ const Homepage = () => {
 
   // non cached state vars
   const [output, setOutput] = useState('')
+  const [outputStyles, setOutputStyles] = useState({})
   /* state to toggle the navbar of the screen */
   const [visible, setVisible] = useState(true)
 
@@ -186,7 +187,14 @@ const Homepage = () => {
         code: code,
       })
       .then(({ data }) => {
-        setOutput(data.toString())
+        setOutput(data.output)
+        //Set output color based on verdict 
+        if(data.verdict==="error"){
+          setOutputStyles({color:"red"})
+        }else{
+          setOutputStyles({})
+        }
+        
       })
   }
 
@@ -392,6 +400,7 @@ const Homepage = () => {
             showGutter={false}
             highlightActiveLine={false}
             readOnly={true}
+            style={outputStyles}
           />
         </div>
       </div>
