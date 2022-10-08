@@ -193,7 +193,7 @@ const Homepage = () => {
             className="nav-btn"
             onClick={() =>
               window.open(
-                'https://github.com/nafees87n/remote-code-executor/blob/main/docs/DOCS.md'
+                'https://github.com/nafees87n/codebox/blob/main/docs/DOCS.md'
               )
             }
           >
@@ -202,7 +202,7 @@ const Homepage = () => {
           <button
             className="nav-btn"
             onClick={() =>
-              window.open('https://github.com/nafees87n/remote-code-executor')
+              window.open('https://github.com/nafees87n/codebox')
             }
           >
             <h2>github</h2>
@@ -231,7 +231,7 @@ const Homepage = () => {
               </select>
               <h2 className="region-title-divider">|</h2>
               <button id="run-btn" onClick={handlerun}>
-                RUN
+                RUN (ALT + F5)
               </button>{' '}
             </>
           ) : (
