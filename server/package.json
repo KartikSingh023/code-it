@@ -13,8 +13,5 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "socket.io": "^3.1.0"
-  },
-  "devDependencies": {
-    "prettier": "2.2.1"
   }
 }
