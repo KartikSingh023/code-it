@@ -206,6 +206,11 @@ justify-content: space-between;
     display: none;
 }
 
+#color-theme {
+    font-size: 1.1em;
+    border: 1px solid black;
+}
+
 @media only screen and (max-width:500px) {
     #root {
         width: 100%;

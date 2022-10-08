@@ -10,7 +10,27 @@ import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/mode-c_cpp'
 import 'ace-builds/src-noconflict/mode-javascript'
 import 'ace-builds/src-noconflict/ext-language_tools'
+import 'ace-builds/src-noconflict/theme-ambiance'
+import 'ace-builds/src-noconflict/theme-chaos'
+import 'ace-builds/src-noconflict/theme-chrome'
+import 'ace-builds/src-noconflict/theme-clouds'
+import 'ace-builds/src-noconflict/theme-clouds_midnight'
 import 'ace-builds/src-noconflict/theme-cobalt'
+import 'ace-builds/src-noconflict/theme-crimson_editor'
+import 'ace-builds/src-noconflict/theme-dawn'
+import 'ace-builds/src-noconflict/theme-dracula'
+import 'ace-builds/src-noconflict/theme-eclipse'
+import 'ace-builds/src-noconflict/theme-github'
+import 'ace-builds/src-noconflict/theme-gob'
+import 'ace-builds/src-noconflict/theme-mono_industrial'
+import 'ace-builds/src-noconflict/theme-monokai'
+import 'ace-builds/src-noconflict/theme-terminal'
+import 'ace-builds/src-noconflict/theme-textmate'
+import 'ace-builds/src-noconflict/theme-tomorrow'
+import 'ace-builds/src-noconflict/theme-tomorrow_night'
+import 'ace-builds/src-noconflict/theme-tomorrow_night_blue'
+import 'ace-builds/src-noconflict/theme-twilight'
+import 'ace-builds/src-noconflict/theme-xcode'
 // custom
 import useLocalStorage from '../../hooks/useLocalStorage'
 import ModalBox from '../Modalbox/ModalBox'
@@ -164,6 +184,10 @@ const Homepage = () => {
     setVisible(!visible)
   }
 
+  //State to change the themes
+  const [currentTheme, setCurrentTheme] = useState("cobalt") 
+
+
   // component return
   return (
     <>
@@ -183,6 +207,18 @@ const Homepage = () => {
           <button className="nav-btn menu_btn" onClick={toggleMenu}>
             <h2>Menu</h2>
           </button>
+
+          <select 
+            name="color-theme" 
+            id="color-theme" 
+            className="nav-btn" 
+            onChange={(e)=>{setCurrentTheme(e.target.value)}}
+            style={{ display: visible ? 'block' : 'none' }}
+          >
+            <option value="cobalt" selected>Default</option>
+            {Object.keys(CONSTANTS.THEMES).map(theme=><option value={CONSTANTS.THEMES[theme]}>{theme}</option>)}
+          </select>
+
           {joinedSessionCode !== '' ? (
             <button
               style={{ display: visible ? 'block' : 'none' }}
@@ -270,7 +306,7 @@ const Homepage = () => {
         <div className="general-editor">
           <AceEditor
             mode={mode}
-            theme="cobalt"
+            theme={currentTheme}
             height="100%"
             width="2fr"
             value={code}
@@ -295,7 +331,7 @@ const Homepage = () => {
         <div className="general-editor">
           <AceEditor
             mode="text"
-            theme="cobalt"
+            theme={currentTheme}
             height="100%"
             width="1fr"
             value={input}
@@ -316,7 +352,7 @@ const Homepage = () => {
         <div className="general-editor">
           <AceEditor
             mode="text"
-            theme="cobalt"
+            theme={currentTheme}
             height="100%"
             width="1fr"
             value={output}

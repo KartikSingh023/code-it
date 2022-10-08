@@ -14,6 +14,29 @@ const CONSTANTS = {
       '#include <iostream>\n\nint main() {\n\tstd::cout << "hello rce";\n\treturn 0;\n}',
     python: "print('hello rce')",
   },
+  THEMES:{
+    "Ambiance":"ambiance",
+    "Chaos":"chaos",
+    "Chrome":"chrome",
+    "Clouds":"clouds",
+    "Clouds Midnight":"clouds_midnight",
+    "Cobalt":"cobalt",
+    "Crimson Editor":"crimson_editor",
+    "Dawn":"dawn",
+    "Dracula":"dracula",
+    "Eclipse":"eclipse",
+    "GitHub":"github",
+    "Gob":"gob",
+    "Mono Industrial":"mono_industrial",
+    "Monokai":"monokai",
+    "Terminal":"terminal",
+    "Textmate":"textmate",
+    "Tomorrow":"tomorrow",
+    "Tomorrow Night":"tomorrow_night",
+    "Tomorrow Night Blue":"tomorrow_night_blue",
+    "Twilight":"twilight",
+    "XCode":"xcode",
+  }
 }
 
 module.exports = CONSTANTS
