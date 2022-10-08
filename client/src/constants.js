@@ -36,7 +36,8 @@ const CONSTANTS = {
     "Tomorrow Night Blue":"tomorrow_night_blue",
     "Twilight":"twilight",
     "XCode":"xcode",
-  }
+  },
+  DEFAULT_THEME:"cobalt"
 }
 
 module.exports = CONSTANTS

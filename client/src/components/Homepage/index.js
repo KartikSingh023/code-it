@@ -57,7 +57,14 @@ const Homepage = () => {
   const [joinedSessionCode, setJoinedSessionCode] = useLocalStorage(
     'joinedSessionCode',
     ''
-  )
+    )
+    
+  /* state to toggle the navbar of the screen */
+  const [visible, setVisible] = useState(true)
+    
+  //State to change the themes
+  const [currentTheme, setCurrentTheme] = useState(CONSTANTS.DEFAULT_THEME) 
+    
   // non cached state vars
   const [output, setOutput] = useState('')
 
@@ -89,21 +96,31 @@ const Homepage = () => {
       localStorage.setItem(
         'na-rce-storeTime',
         JSON.stringify(new Date().getTime())
-      )
-    }
+        )
+      }
     if (userCode === '') {
       axios
-        .get('/code')
-        .then(({ data }) => {
-          setUserCode(data)
-
-          socket.emit('hostSession', {
-            channelID: data,
+      .get('/code')
+      .then(({ data }) => {
+        setUserCode(data)
+        
+        socket.emit('hostSession', {
+          channelID: data,
           })
         })
         .catch((e) => console.log('error', e))
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      
+      
+      //Check whether the current screen size is desktop or mobile
+      if (window.screen.width < 500) {
+        setVisible(false)
+      }
+
+      //Set theme based on localStorage; if user is new,then use default theme
+      setCurrentTheme(localStorage.getItem('codebox_theme') || CONSTANTS.DEFAULT_THEME)
+
   }, [])
 
   // on change in [joinedSessionCode] effect
@@ -169,24 +186,16 @@ const Homepage = () => {
       })
   }
 
-  /* states and fucntions to control the responsiveness of the screen */
-  const [visible, setVisible] = useState(true)
-
-  //Check whether teh current screen size is desktop or mobile
-  useEffect(() => {
-    if (window.screen.width < 500) {
-      setVisible(false)
-    }
-  }, [])
-
   //function to toggle menu for mobile view
   const toggleMenu = () => {
     setVisible(!visible)
   }
 
-  //State to change the themes
-  const [currentTheme, setCurrentTheme] = useState("cobalt") 
-
+  //Function to handle change of selected theme
+  const handleThemeChange = (e) => {
+    setCurrentTheme(e.target.value)
+    localStorage.setItem("codebox_theme",e.target.value)
+  }
 
   // component return
   return (
@@ -212,10 +221,11 @@ const Homepage = () => {
             name="color-theme" 
             id="color-theme" 
             className="nav-btn" 
-            onChange={(e)=>{setCurrentTheme(e.target.value)}}
+            onChange={handleThemeChange}
             style={{ display: visible ? 'block' : 'none' }}
+            value={currentTheme}
           >
-            <option value="cobalt" selected>Default</option>
+            <option value={CONSTANTS.DEFAULT_THEME} selected>Default Theme</option>
             {Object.keys(CONSTANTS.THEMES).map(theme=><option value={CONSTANTS.THEMES[theme]}>{theme}</option>)}
           </select>
 
