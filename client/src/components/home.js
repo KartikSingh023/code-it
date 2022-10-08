@@ -27,19 +27,51 @@ const Homepage = () => {
   const [mode, setMode] = useLocalStorage('mode', 'python')
   const [code, setCode] = useLocalStorage('code', defaultCode[mode])
   const [input, setInput] = useLocalStorage('input', '')
+  // const [userCode, setUserCode] = useState('')
+  // const [mode, setMode] = useState('python')
+  // const [code, setCode] = useState(defaultCode[mode])
+  // const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
   const [joinedSessionCode, setJoinedSessionCode] = useState('')
-
+  const [userID, setUserID] = useState('')
   useEffect(() => {
     if (userCode === '') {
-      axios.get('/code').then(({ data }) => setUserCode(data))
+      axios
+        .get('http://localhost:9000/code')
+        .then(({ data }) => {
+          setUserCode(data)
+          console.log('thik', data)
+        })
+        .catch((e) => console.log('error', e))
     }
-    socket.emit('joinSession', userCode)
+    const code = `${userCode}-${new Date().getTime()}`
+    setUserID(code)
+    socket.emit('joinSession', {
+      mark: 'usercode',
+      channelID: userCode,
+      userID: code,
+    })
   }, [])
 
   useEffect(() => {
     console.log(joinedSessionCode)
+    // setUserID(`${joinedSessionCode}-${new Date().getTime()}`)
+    socket.emit('joinSession', {
+      mark: 'koincode',
+      channelID: joinedSessionCode,
+      userID,
+    })
   }, [joinedSessionCode])
+
+  useEffect(() => {
+    socket.emit('realtime', {
+      userID,
+      mode,
+      code,
+      input,
+      output,
+    })
+  }, [mode, code, input, output])
 
   const modeHandle = (e) => {
     setCode(defaultCode[e.target.value])
