@@ -1,17 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Editor from './Editor'
 import AceEditor from 'react-ace'
+import axios from 'axios'
 import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/src-noconflict/mode-c_cpp'
 import 'ace-builds/src-noconflict/mode-javascript'
 import 'ace-builds/src-noconflict/theme-monokai'
 import 'ace-builds/src-noconflict/ext-language_tools'
 
-const languages = ['javascript', 'c++', 'python']
+const languages = ['javascript', 'c_cpp', 'python']
+const modes = { javascript: 'js', c_cpp: 'cpp', python: 'py' }
 const Homepage = () => {
   const [mode, setMode] = useState('javascript')
+  const [userCode, setUserCode] = useState('')
   const [code, setCode] = useState('')
   const [input, setInput] = useState('')
+  const [output, setOutput] = useState('')
+
+  const modeHandle = (e) => {
+    setMode(e.target.value)
+  }
+
+  useEffect(() => {
+    axios.get('/code').then(({ data }) => setUserCode(data))
+  }, [])
+
+  const handlerun = () => {
+    console.log('oka')
+    axios
+      .post('/code', {
+        key: userCode,
+        language: modes[mode],
+        input: input,
+        code: code,
+      })
+      .then((res) => setOutput(res.data.stdout))
+  }
+
   return (
     <div className="container-fluid m-0 p-0">
       <div className="row m-0 p-0 ">
@@ -24,14 +49,14 @@ const Homepage = () => {
             style={{ background: 'black', color: 'white' }}
           >
             <h1 className="">Code</h1>
-            <select onChange={(e) => setMode(e.target.value)}>
+            <select onChange={modeHandle}>
               {languages.map((lang) => (
                 <option key={lang} value={lang}>
                   {lang}
                 </option>
               ))}
             </select>
-            <button>run</button>
+            <button onClick={handlerun}>run</button>
           </div>
           <div style={{ width: '100%', height: '100%' }}>
             <AceEditor
@@ -83,6 +108,7 @@ const Homepage = () => {
                 theme="monokai"
                 height="100%"
                 width="100%"
+                value={output}
                 fontSize={18}
                 showPrintMargin={false}
                 readOnly

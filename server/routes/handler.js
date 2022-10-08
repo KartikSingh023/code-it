@@ -36,8 +36,8 @@ router.post('/code', (req, res) => {
     input, // user's input string to be stored in storage/input
     code, // user's code string to be stored in storage/code.xyz
   } = req.body
-
-  console.log(`key: ${key}`);
+  console.log('body', req.body)
+  console.log(`key: ${key}`)
   console.log(`language: ${language}`)
   console.log(`path: ${USERSTORAGEPATH}`)
 
@@ -62,19 +62,20 @@ router.post('/code', (req, res) => {
       switch (language) {
         // python
         case 'py': {
-          console.log('handler.js py language switch');
+          console.log('handler.js py language switch')
           pythonHandler(key, USERSTORAGEPATH)
             .then((result) => {
-              console.log('responding to client with result');
-              console.log(result);
-              res.send(result)}) // callback responds result of successful execution
+              console.log('responding to client with result')
+              console.log(result)
+              res.send(result)
+            }) // callback responds result of successful execution
             .catch((err) => res.send(err)) // callback responds result of failed execution
           break
         }
 
         // c++
         case 'cpp': {
-          console.log('handler.js cpp language switch');
+          console.log('handler.js cpp language switch')
           cppHandler(key, USERSTORAGEPATH)
             .then((result) => {
               console.log('responding to client with result')
@@ -82,8 +83,8 @@ router.post('/code', (req, res) => {
               res.send(result)
             }) // callback responds result of successful execution
             .catch((err) => {
-              console.log('responding to client with err');
-              console.log(err);
+              console.log('responding to client with err')
+              console.log(err)
               res.send(err)
             }) // callback responds result of failed execution
           break
