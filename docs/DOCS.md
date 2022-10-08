@@ -2,9 +2,9 @@
 
 ## Setting up the application
 
-> NOTE: As mentioned before, set up is not required. This guide is aimed at development and testing of the service rather than for the end user. 
-> 
-> This file describes the local machine setup. Both the server and client will be created on localhost. As such, the installation will also take place on the user's machine. Please refer to [SERVER.md](https://github.com/nafees87n/remote-code-executor/blob/main/docs/SERVER.md) to learn about hosting the applcation remotely
+> NOTE: As mentioned before, set up is not required. This guide is aimed at development and testing of the service rather than for the end user.
+>
+> This file describes the local machine setup. Both the server and client will be created on localhost. As such, the installation will also take place on the user's machine. Please refer to [SERVER.md](https://github.com/nafees87n/codebox/blob/main/docs/SERVER.md) to learn about hosting the applcation remotely
 
 ### Installation:
 
@@ -45,7 +45,7 @@ Reboot the host machine.
 
 Start a terminal and redirect into the project repository:
 ```
-$ cd /path/to/repo/remote-code-executor/
+$ cd /path/to/repo/codebox/
 ```
 
 ### Using the Bash Script [Linux/Unix only]:
@@ -144,6 +144,6 @@ storage
 
 The `key` is thus also used to generate the `filePath` variable that we saw in the executor service. The `filePath` is simply given (from root) as -- `/storage/${key}` without any file extension.
 
-It is also the `sessionId` of the user. It can be obtained by sending a GET request to `localhost:9000/code` or `http://13.126.57.93/code`. 
+It is also the `sessionId` of the user. It can be obtained by sending a GET request to `localhost:9000/code` or `http://13.235.81.188/code`.
 
 The `sessionId` enables users to uniquely identify their room. It can be shared to other people. It essentially represents the room, and so you can enter a `sessionId` to join another person's room for a live session.

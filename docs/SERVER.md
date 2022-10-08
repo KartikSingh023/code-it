@@ -6,7 +6,7 @@
 
 > If you wish to attempt at hosting this, replace all server URLs with the public IPv4 or correspondig DNS host name provided by AWS EC2, and replace the client app URLs with the one for your own heroku app.
 
-The `server` (and `executor`), make up the API. This is hosted on an AWS Elastic Cloud Compute (EC2) instance, available [here](http://13.126.57.93/) (http). The API listens over HTTP (on port 80).
+The `server` (and `executor`), make up the API. This is hosted on an AWS Elastic Cloud Compute (EC2) instance, available [here](http://13.235.81.188/) (http). The API listens over HTTP (on port 80).
 
 The `client` is hosted via Heroku, deployed [here](http://codebox.herokuapp.com) (http). Heroku also builds an HTTPS site, however it is currently incompatible with our API.
 
@@ -36,14 +36,14 @@ $ sudo apt upgrade
 
 Then make a new directory and initialise it as a git repository.
 ```
-$ mkdir remote-code-executor
-$ cd remote-code-executor
+$ mkdir codebox
+$ cd codebox
 $ git init
 ```
 
 Then add the repository's origin as a remote, and checkout the production branch.
 ```
-$ git remote add origin https://github.com/nafees87n/remote-code-executor.git
+$ git remote add origin https://github.com/nafees87n/codebox.git
 $ git pull origin production
 $ git checkout production
 ```
@@ -63,7 +63,7 @@ For the client, a [seperate repository](https://github.com/aaryak-shah/rce-clien
 
 The same code, however can be found in the `production` branch of the current repo, in the `client` folder.
 
-The client's request URLs have been updated to the IP address of the API: `http://13.126.57.93`
+The client's request URLs have been updated to the IP address of the API: `http://13.235.81.188`
 
 To host this, we perform the following actions:
 

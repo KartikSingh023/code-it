@@ -4,7 +4,7 @@
 
 > NOTE: Do **NOT** access the `https` version of the above site. The API server does not currently have an SSL certificate, and so the `https` client will not be able to communicate with the API due to the Mixed Content policy implemented in browsers.
 
-> The API is seperately accessible [here](http://13.126.57.93/code), for use with Postman or cURL. However it is recommended to use the heroku app linked before.
+> The API is seperately accessible [here](http://13.235.81.188/code), for use with Postman or cURL. However it is recommended to use the heroku app linked before.
 
 ![Client App Demo Gif](./docs/rce-demo.gif)
 
@@ -32,7 +32,7 @@ The client application, linked above, is available to access the API. It enables
 
 User set up for this project is not required, as a deployed version can be accessed through the [client app](http://codebox.herokuapp.com) (linked at the top).
 
-However if you wish to set the project up yourself, documentation has been provided in the `docs` folder. Check out [DOCS.md](https://github.com/nafees87n/remote-code-executor/blob/main/docs/DOCS.md) for a detailed reference. It describes local machine setup and service functioning. Read [SERVER.md](https://github.com/nafees87n/remote-code-executor/blob/main/docs/SERVER.md) for documentation on deployment.
+However if you wish to set the project up yourself, documentation has been provided in the `docs` folder. Check out [DOCS.md](https://github.com/nafees87n/codebox/blob/main/docs/DOCS.md) for a detailed reference. It describes local machine setup and service functioning. Read [SERVER.md](https://github.com/nafees87n/codebox/blob/main/docs/SERVER.md) for documentation on deployment.
 
 ## Tech Stack
 
@@ -50,7 +50,7 @@ This RCE project combines various different technologies:
 
 ## Functioning
 
-The API accepts POST requests at the `localhost:9000/code` or `http://13.126.57.93/code` endpoint.
+The API accepts POST requests at the `localhost:9000/code` or `http://13.235.81.188/code` endpoint.
 
 ### Request JSON Keys:
 
