@@ -7,7 +7,7 @@ const ModalBox = (props) => {
   return (
     <div className='modal-box'>
       <div className='modal-btn-bar'>
-      <h2 className="white">Session details</h2>
+      <h2 className="white">Session Details</h2>
         <button
           className='rotate'
           onClick={() => {
