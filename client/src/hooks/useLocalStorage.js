@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 
 // identifying prefix for keys in localStorage
-const PREFIX = 'na-rce-'
+const {PREFIX} = require('../constants.js')
 
 // custom hook
 // stores state variables in localStorage as well when their value is set

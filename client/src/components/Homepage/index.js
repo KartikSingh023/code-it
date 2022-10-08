@@ -18,16 +18,14 @@ import ModalBox from "../ModalBox";
 import "../../fonts/JetBrainsMono[wght].ttf";
 import "./Homepage.css";
 
+//constants
+const {SOCKET,MODES,DEFAULT_CODE,DOCS,GITHUB_URL} = require('../../constants.js')
+
 // global vars
 var languages = ["python", "c_cpp", "javascript"];
-const socket = openSocket("http://localhost:9000");
-const modes = { javascript: "js", c_cpp: "cpp", python: "py" };
-const defaultCode = {
-  javascript: "console.log('hello rce')",
-  c_cpp:
-    '#include <iostream>\n\nint main() {\n\tstd::cout << "hello rce";\n\treturn 0;\n}',
-  python: "print('hello rce')",
-};
+const socket = openSocket(SOCKET);
+const modes = MODES;
+const defaultCode = DEFAULT_CODE;
 
 // component
 const Homepage = () => {
@@ -195,16 +193,14 @@ const Homepage = () => {
           <button
             className="nav-btn"
             onClick={() =>
-              window.open(
-                "https://github.com/nafees87n/codebox/blob/main/docs/DOCS.md"
-              )
+              window.open(DOCS)
             }
           >
             <h2>docs</h2>
           </button>
           <button
             className="nav-btn"
-            onClick={() => window.open("https://github.com/nafees87n/codebox")}
+            onClick={() => window.open(GITHUB_URL)}
           >
             <h2>github</h2>
           </button>
