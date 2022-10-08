@@ -7,6 +7,7 @@ import 'ace-builds/src-noconflict/mode-javascript'
 import 'ace-builds/src-noconflict/theme-cobalt'
 import 'ace-builds/src-noconflict/ext-language_tools'
 import useLocalStorage from '../hooks/useLocalStorage'
+import ModalBox from './modalBox'
 import '../fonts/JetBrainsMono[wght].ttf'
 import './home.css'
 
@@ -20,9 +21,9 @@ const defaultCode = {
 }
 
 const Homepage = () => {
-  const [userCode, setUserCode] = useState('')
   const [output, setOutput] = useState('')
 
+  const [userCode, setUserCode] = useLocalStorage('userCode', '')
   const [mode, setMode] = useLocalStorage('mode', 'python')
   const [code, setCode] = useLocalStorage('code', defaultCode[mode])
   const [input, setInput] = useLocalStorage('input', '')
@@ -30,7 +31,7 @@ const Homepage = () => {
   useEffect(() => {
     if (userCode === '')
       axios.get('/code').then(({ data }) => setUserCode(data))
-  }, [userCode])
+  }, [])
 
   // const [isSessionStarter, setSessionStarter] = useState(true)
 
@@ -54,10 +55,18 @@ const Homepage = () => {
 
   return (
     <>
+      <div className="modal-bg">
+        <ModalBox userCode={userCode} />
+      </div>
       <div className="nav">
         <h1 id="brand"> &gt;codeBox </h1>
         <div id="navigation">
-          <button className="nav-btn">
+          <button
+            className="nav-btn"
+            onClick={() => {
+              document.getElementsByClassName('modal-bg')[0].id = ''
+            }}
+          >
             <h2>session</h2>
           </button>
           <button

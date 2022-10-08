@@ -2,6 +2,12 @@ html {
   height: 100%;
 }
 
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'),
+    url(./fonts/JetBrainsMono[wght].ttf) format('truetype');
+}
+
 body {
   min-height: 100%;
   margin: 0;
