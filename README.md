@@ -8,13 +8,13 @@
 
 ## Contribute
 
-We are accepting contributions to codeBox! Check out [CONTRIBUTING.md](./CONTRIBUTING.md) to learn more. Make sure to read our [docs](./docs/DOCS.md) to learn about the set up process.
+We are accepting contributions to Code-IT! Check out [CONTRIBUTING.md](./CONTRIBUTING.md) to learn more. Make sure to read our [docs](./docs/DOCS.md) to learn about the set up process.
 
 Feel free to make an issue if you have any inquiry or doubt. Use the `question` label for this.
 
 ## What Is It?
 
-**codeBox RCE** is a service that provides a remote environment to run your code in. Execution occurs in a containerized space. The API supports programming in 3 languages (Python, Javascript and C++), potentially extendable to support more.
+**Code-IT RCE** is a service that provides a remote environment to run your code in. Execution occurs in a containerized space. The API supports programming in 3 languages (Python, Javascript and C++), potentially extendable to support more.
 
 This RCE project provides a basic API to execute programs on a remote server. Basic code validation is performed to prevent possibly malicious code.
 
@@ -29,13 +29,13 @@ The client application, linked above, is available to access the API. It enables
 
 ## Architecture
 
-![Codebox Architecture](docs/codebox-rce-architecture.png)
+![Code-IT Architecture](docs/Code-IT-rce-architecture.png)
 
 ## Set Up
 
-User set up for this project is not required, as a deployed version can be accessed through the [client app](http://codebox.herokuapp.com) (linked at the top).
+User set up for this project is not required, as a deployed version can be accessed through the [client app](http://Code-IT.herokuapp.com) (linked at the top).
 
-However if you wish to set the project up yourself, documentation has been provided in the `docs` folder. Check out [DOCS.md](https://github.com/nafees87n/codebox/blob/main/docs/DOCS.md) for a detailed reference. It describes local machine setup and service functioning. Read [SERVER.md](https://github.com/nafees87n/codebox/blob/main/docs/SERVER.md) for documentation on deployment.
+However if you wish to set the project up yourself, documentation has been provided in the `docs` folder. Check out [DOCS.md](https://github.com/nafees87n/Code-IT/blob/main/docs/DOCS.md) for a detailed reference. It describes local machine setup and service functioning. Read [SERVER.md](https://github.com/nafees87n/Code-IT/blob/main/docs/SERVER.md) for documentation on deployment.
 
 ## Tech Stack
 
